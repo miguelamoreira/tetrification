@@ -7,6 +7,7 @@ import GameView from '../views/GameView.vue'
 import PageNotFoundView from '@/views/PageNotFoundView.vue'
 import LeaderboardTournamentView from '@/views/LeaderboardTournamentView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import { useUserStore } from '@/stores/users';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
