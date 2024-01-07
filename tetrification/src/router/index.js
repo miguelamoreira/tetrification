@@ -7,6 +7,7 @@ import GameView from '../views/GameView.vue'
 import PageNotFoundView from '@/views/PageNotFoundView.vue'
 import LeaderboardTournamentView from '@/views/LeaderboardTournamentView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import PlayerView from '@/views/PlayerView.vue'
 import { useUserStore } from '@/stores/users';
 
 const router = createRouter({
@@ -16,21 +17,6 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
-    {
-      path: '/sectionTetris',
-      name: 'sectionTetris',
-      component: HomeView, 
-    },
-    {
-      path: '/sectionTournament',
-      name: 'sectionTournament',
-      component: HomeView,
-    },
-    {
-      path: '/sectionFAQ',
-      name: 'sectionFAQ',
-      component: HomeView,
     },
     {
       path: '/login',
@@ -52,6 +38,12 @@ const router = createRouter({
       path: '/dashboard/game/:gameId',
       name: 'game',
       component: GameView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/dashboard/game/:gameId/:playerId',
+      name: 'player',
+      component: PlayerView,
       meta: { requiresAuth: true }
     },
     {

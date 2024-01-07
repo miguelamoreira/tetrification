@@ -14,11 +14,14 @@
           <div class="time">
             <h3>{{ minutes }}:00</h3>
           </div>
+          <div class="title">
+  <p>Player Info: {{ players('SIDNEV') }}</p>
+</div>
         </div>
 
         <div class="gameboys">
           <v-card class="pa-4 pt-4 mb-8 mt-4" elevation="4" style="z-index: 1; background-color: var(--vt-c-white-mute); width: 45%;">
-            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;">
+            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" @click="redirectToPlayerDetails(players(player1))">
               {{ player1 }}
             </v-card-title>
             <v-card-content class="text-center">
@@ -53,7 +56,7 @@
           </v-card>
 
           <v-card class="pa-4 pt-4 mb-8 mt-4" elevation="4" style="z-index: 1; background-color: var(--vt-c-white-mute); width: 45%;">
-            <v-card-title class="text-center card-title mb-4" style="max-width: 200px; margin: 0 auto;">
+            <v-card-title class="text-center card-title mb-4" style="max-width: 200px; margin: 0 auto;" @click="redirectToPlayerDetails(players(player2))">
               {{ player2 }}
             </v-card-title>
             <v-card-content class="text-center">
@@ -94,8 +97,8 @@
           </v-card-title>
           <v-card-content>
             <div class="bets">
-              <v-btn class="btnBet ma-4">{{ player1 }}</v-btn>
-              <v-btn class="btnBet ma-4">{{ player2 }}</v-btn>
+              <v-btn class="btnBet ma-4" id="btnPlayer1">{{ player1 }}</v-btn>
+              <v-btn class="btnBet ma-4" id="btnPlayer2" >{{ player2 }}</v-btn>
             </div>
           </v-card-content>
         </v-card>
@@ -121,6 +124,7 @@
 <script>
 import { useUserStore } from '@/stores/users';
 import { useGameStore } from '@/stores/games';
+import { usePlayersStore } from '@/stores/players';
 import NavBar from '@/components/navbar.vue';
 
 export default {
@@ -131,6 +135,7 @@ export default {
     return {
       userStore: useUserStore(),
       gameStore: useGameStore(),
+      playerStore: usePlayersStore(),
       gameId: null,
       minutes: 0,
       player1: '',
@@ -217,6 +222,30 @@ export default {
       } catch (error) {
         console.error("Error fetching game data:", error);
       }
+    },
+    bets() {
+
+      const btnPlayer1 = document.getElementById('btnPlayer1');
+      const btnPlayer2 = document.getElementById('btnPlayer2');
+
+      const pastGamesIds = [1, 2, 3, 4];
+      const liveGamesIds = [5, 6];
+      const futureGamesIds = [7];
+
+      if (pastGamesIds.includes(this.gameId)) {
+        btnPlayer1.disabled = true;
+        btnPlayer2.disabled = true;
+      } else if (liveGamesIds.includes(this.gameId)) {
+        console.log('else if');
+      } else {
+        console.log('else');
+      }
+    },
+    players(playerName) {
+      return this.playerStore.getPlayerIdByName(playerName);
+    },
+    redirectToPlayerDetails(playerId) {
+      this.$router.push(`/dashboard/game/:gameId/${playerId}`);
     },
   },
 mounted() {
