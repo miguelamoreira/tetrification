@@ -245,7 +245,7 @@ export default {
       return this.playerStore.getPlayerIdByName(playerName);
     },
     redirectToPlayerDetails(playerId) {
-      this.$router.push(`/dashboard/game/:gameId/${playerId}`);
+      this.$router.push(`/dashboard/game/${this.gameId}/${playerId}`);
     },
   },
 mounted() {
