@@ -70,7 +70,7 @@
         <v-btn class="ma-4 btn-game-list btn-active" @click="handleBtnClick('past')" id="btnPast">Past</v-btn>
         <v-btn class="ma-4 btn-game-list" @click="handleBtnClick('future')" id="btnFuture">Future</v-btn>
         <div>
-          <v-card class="mb-4 py-4 ma-4 game-card" v-if="visibleGames.length > 0" v-for="(game, index) in visibleGames" :key="index">
+          <v-card class="mb-4 py-4 ma-4 game-card" v-if="visibleGames.length > 0" v-for="(game, index) in visibleGames" :key="index" @click="redirectToGameDetails(game.gameId)">
             <div style="display: flex; justify-content: space-evenly;" class="ma-2">
               <v-btn></v-btn>
               <span style="width: 100px;">{{ game.player1 }}</span>
@@ -212,6 +212,7 @@ export default {
       });
     } else {
       this.liveGames = this.getLiveGames();
+      this.visibleGames = this.getPastGames();
     }
   },
 };

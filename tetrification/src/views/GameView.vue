@@ -14,9 +14,6 @@
           <div class="time">
             <h3>{{ minutes }}:00</h3>
           </div>
-          <div class="title">
-  <p>Player Info: {{ players('SIDNEV') }}</p>
-</div>
         </div>
 
         <div class="gameboys">
