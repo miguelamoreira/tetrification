@@ -5,9 +5,10 @@ import SignUpView from '../views/SignUpView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import GameView from '../views/GameView.vue'
 import PageNotFoundView from '@/views/PageNotFoundView.vue'
-import LeaderboardTournamentView from '@/views/LeaderboardTournamentView.vue'
+import LeaderboardView from '@/views/LeaderboardTournamentView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import PlayerView from '@/views/PlayerView.vue'
+import UserView from '@/views/UserView.vue'
 import { useUserStore } from '@/stores/users';
 
 const router = createRouter({
@@ -49,7 +50,13 @@ const router = createRouter({
     {
       path: '/leaderboard',
       name: 'leaderboard',
-      component: LeaderboardTournamentView,
+      component: LeaderboardView,
+      meta: { requiresAuth: true},
+    }, 
+    {
+      path: '/leaderboard/:userId',
+      name: 'user profile',
+      component: UserView,
       meta: { requiresAuth: true},
     }, 
     {
