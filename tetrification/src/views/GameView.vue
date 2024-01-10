@@ -18,7 +18,10 @@
 
         <div class="gameboys">
           <v-card class="pa-4 pt-4 mb-8 mt-4" elevation="4" style="z-index: 1; background-color: var(--vt-c-white-mute); width: 45%;">
-            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" @click="redirectToPlayerDetails(players(player1))">
+            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" v-if="gameId == 7">
+              {{ player1 }}
+            </v-card-title>
+            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" @click="redirectToPlayerDetails(players(player1))" v-else>
               {{ player1 }}
             </v-card-title>
             <v-card-content class="text-center">
@@ -53,7 +56,10 @@
           </v-card>
 
           <v-card class="pa-4 pt-4 mb-8 mt-4" elevation="4" style="z-index: 1; background-color: var(--vt-c-white-mute); width: 45%;">
-            <v-card-title class="text-center card-title mb-4" style="max-width: 200px; margin: 0 auto;" @click="redirectToPlayerDetails(players(player2))">
+            <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" v-if="gameId == 7">
+              {{ player2 }}
+            </v-card-title>
+            <v-card-title class="text-center card-title mb-4" style="max-width: 200px; margin: 0 auto;" @click="redirectToPlayerDetails(players(player2))" v-else>
               {{ player2 }}
             </v-card-title>
             <v-card-content class="text-center">
@@ -199,8 +205,8 @@ export default {
           }
         } else {
           this.minutes = this.games[0].minute;
-          this.player1 = this.games[0].player1;
-          this.player2 = this.games[0].player2;
+          this.player1 = 'TBD';
+          this.player2 = 'TBD';
           this.pointsPlayer1 = this.games[0].pointsPlayer1;
           this.pointsPlayer2 = this.games[0].pointsPlayer2;
           this.levelPlayer1 = this.games[0].levelPlayer1;
@@ -227,7 +233,6 @@ export default {
 
       const pastGamesIds = [1, 2, 3, 4];
       const liveGamesIds = [5, 6];
-      const futureGamesIds = [7];
 
       if (pastGamesIds.includes(this.gameId)) {
         btnPlayer1.disabled = true;
@@ -242,12 +247,12 @@ export default {
       return this.playerStore.getPlayerIdByName(playerName);
     },
     redirectToPlayerDetails(playerId) {
-      this.$router.push(`/dashboard/game/${this.gameId}/${playerId}`);
+        this.$router.push(`/dashboard/game/${this.gameId}/${playerId}`);  
     },
   },
 mounted() {
     this.fetchGameData();
-},
+  },
 };
 </script>
 

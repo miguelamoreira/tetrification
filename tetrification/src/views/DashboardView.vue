@@ -175,6 +175,9 @@ export default {
         return gamesId.length > 0 ? gamesId[0] : null;
       }).filter(game => game !== null);
 
+      futureGames[0].player1 = 'TBD';
+      futureGames[0].player2 = 'TBD';
+
       console.log('Future games:', futureGames);
       return futureGames;
     },
