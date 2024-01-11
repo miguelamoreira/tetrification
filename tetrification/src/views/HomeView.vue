@@ -21,7 +21,7 @@
       <img src="@/assets/images/landingpage.svg" style="width: 100%; height: auto; max-width: none; position: relative; z-index: 0;" class="pt-8">
     </v-container>
     <v-container id="sectionTetris" style="width:100%;max-width: none; position: relative; background-color: var(--vt-c-white-mute);" class="full-height pt-12">
-      <v-carousel hide-delimiters style="display: flex; align-items: center; justify-content: center;"> 
+      <v-carousel hide-delimiters class="d-flex align-items-center justify-content-ceter"> 
         <v-carousel-item>
           <div class="carousel text-center mx-auto pa-12 py-lg-16">
             <h3 class="mb-12 mb-sm-4  font-weight-bold" style="color: var(--vt-c-medium-purple-1)">History of Tetris</h3>
@@ -156,7 +156,7 @@ export default {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
-    },
+    }
   }
 };
 </script>

@@ -13,9 +13,15 @@
           <h1>Dashboard</h1>
           <h3>Welcome back, <span>{{userStore.getUser.username}}</span>.</h3>
         </div>
-        <div class="streak">
-          <img :src="userStore.getUser.streakImageSrc" alt="Streak Image">
-          <h4>{{ `x${userStore.getUser.streak}` }}</h4>
+        <div class="streak d-flex">
+          <img src="@/assets/images/streak/streak1.svg" v-if="userStore.getUser.streak === 1">
+          <img src="@/assets/images/streak/streak2.svg" v-else-if="userStore.getUser.streak === 2">
+          <img src="@/assets/images/streak/streak3.svg" v-else-if="userStore.getUser.streak === 3">
+          <img src="@/assets/images/streak/streak4.svg" v-else-if="userStore.getUser.streak === 4">
+          <img src="@/assets/images/streak/streak5.svg" v-else-if="userStore.getUser.streak === 5">
+          <img src="@/assets/images/streak/streak6.svg" v-else-if="userStore.getUser.streak === 6">
+          <img src="@/assets/images/streak/streak7.svg" v-else>
+          <h4 class="align-self-end">{{ `x${userStore.getUser.streak}` }}</h4>
         </div>
 
         <!-- Live card -->
@@ -23,15 +29,17 @@
           <v-card-title class="text-center card-title mb-4" style="background-color: var(--vt-c-medium-purple-2); max-width: 150px; margin: 0 auto;">
             Live
           </v-card-title>
-          <v-card v-for="(game, index) in liveGames" :key="index" class="pa-2 pt-8 mb-4 game" style="z-index: 1;" @click="redirectToGameDetails(game.gameId)">
+          <v-card v-for="(game, index) in liveGames" :key="index" class="pa-6  mb-4 game d-flex justify-space-evenly align-center" style="z-index: 1;" @click="redirectToGameDetails(game.gameId)">
             <!-- button simulating image; elements positioning purposes -->
-            <v-btn></v-btn>
+            <img v-if="getPlayerCountry(game.player1) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="10%">
+            <img v-else-if="getPlayerCountry(game.player1) === 'USA'" src="@/assets/images/flags/usa.svg" width="10%">
             <span>{{ game.player1 }}</span>
             <h3>{{ game.pointsPlayer1 }}</h3>
             <span>vs</span>
             <h3>{{ game.pointsPlayer2 }}</h3>
             <span>{{ game.player2 }}</span>
-            <v-btn></v-btn>
+            <img v-if="getPlayerCountry(game.player2) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="10%">
+            <img v-else-if="getPlayerCountry(game.player2) === 'USA'" src="@/assets/images/flags/usa.svg" width="10%">
           </v-card>
         </v-card>
 
@@ -70,23 +78,57 @@
         <v-btn class="ma-4 btn-game-list btn-active" @click="handleBtnClick('past')" id="btnPast">Past</v-btn>
         <v-btn class="ma-4 btn-game-list" @click="handleBtnClick('future')" id="btnFuture">Future</v-btn>
         <div>
-          <v-card class="mb-4 py-4 ma-4 game-card" v-if="visibleGames.length > 0" v-for="(game, index) in visibleGames" :key="index" @click="redirectToGameDetails(game.gameId)">
-            <div style="display: flex; justify-content: space-evenly;" class="ma-2">
-              <v-btn></v-btn>
+          <v-card class="mb-4 py-4 ma-4 game-card d-flex flex-column align-content-center" v-if="visibleGames.length > 0" v-for="(game, index) in visibleGames" :key="index" @click="redirectToGameDetails(game.gameId)">
+            <div class="my-2 d-flex justify-space-evenly">
+              <img v-if="getPlayerCountry(game.player1) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="20%">
+              <img v-else-if="getPlayerCountry(game.player1) === 'USA'" src="@/assets/images/flags/usa.svg" width="20%">
+              <img v-else src="@/assets/images/flags/tbd_dashboard.svg" width="20%">
               <span style="width: 100px;">{{ game.player1 }}</span>
-              <div style="display: flex; justify-content: space-around;">
+              <div v-if="game.winsPlayer1 === 0" class="d-flex justify-space-around">
                 <img src="@/assets/images/life1.svg"  style="width: 30%;">
                 <img src="@/assets/images/life1.svg" style="width: 30%;">
                 <img src="@/assets/images/life1.svg" style="width: 30%;">
               </div>
+              <div v-if="game.winsPlayer1 === 1" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                <img src="@/assets/images/life1.svg" style="width: 30%;">
+                <img src="@/assets/images/life1.svg" style="width: 30%;">
+              </div>
+              <div v-if="game.winsPlayer1 === 2" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
+                <img src="@/assets/images/life1.svg" style="width: 30%;">
+              </div>
+              <div v-if="game.winsPlayer1 === 3" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
+              </div>
             </div>
-            <div style="display: flex; justify-content: space-evenly;" class="mt-6">
-              <v-btn></v-btn>
+            <div class="mt-6 d-flex justify-space-evenly">
+              <img v-if="getPlayerCountry(game.player2) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="20%">
+              <img v-else-if="getPlayerCountry(game.player2) === 'USA'" src="@/assets/images/flags/usa.svg" width="20%">
+              <img v-else src="@/assets/images/flags/tbd_dashboard.svg" width="20%">
               <span style="width: 100px;">{{ game.player2 }}</span>
-              <div style="display: flex; justify-content: space-around;">
+              <div v-if="game.winsPlayer2 === 0" class="d-flex justify-space-around">
+                <img src="@/assets/images/life1.svg"  style="width: 30%;">
                 <img src="@/assets/images/life1.svg" style="width: 30%;">
                 <img src="@/assets/images/life1.svg" style="width: 30%;">
+              </div>
+              <div v-if="game.winsPlayer2 === 1" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
                 <img src="@/assets/images/life1.svg" style="width: 30%;">
+                <img src="@/assets/images/life1.svg" style="width: 30%;">
+              </div>
+              <div v-if="game.winsPlayer2 === 2" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
+                <img src="@/assets/images/life1.svg" style="width: 30%;">
+              </div>
+              <div v-if="game.winsPlayer2 === 3" class="d-flex justify-space-around">
+                <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
+                <img src="@/assets/images/life2.svg" style="width: 30%;">
               </div>
             </div>
           </v-card>
@@ -99,6 +141,7 @@
 <script>
 import { useUserStore } from '@/stores/users';
 import { useGameStore } from '@/stores/games'
+import { usePlayersStore } from '@/stores/players';
 import NavBar from '@/components/navbar.vue'
 import games from '@/api/mocks/games';
 
@@ -110,6 +153,7 @@ export default {
     return {
       userStore: useUserStore(),
       gameStore: useGameStore(),
+      playersStore: usePlayersStore(),
       searchQuery: '',
       liveGames: [],
       visibleGames: [],
@@ -206,6 +250,11 @@ export default {
         return false; 
       });
     },
+    getPlayerCountry(playerName) {
+      const playersStore = usePlayersStore();
+      const player = playersStore.getPlayers.find(p => p.name === playerName);
+      return player ? player.country : 'Unknown';
+    },
   },
   created() {
     if (this.games().length === 0) {
@@ -231,10 +280,6 @@ export default {
     color: var(--vt-c-medium-purple-2);
   }
 
-  .streak {
-    display: flex;
-  }
-
   .streak h4 {
     font-size: 4vh;
     color: #FBD73A;
@@ -255,17 +300,6 @@ export default {
   .btn-game-list:hover, .btn-active  {
     background-color: var(--vt-c-dark-purple-2);
     color: var(--vt-c-white-mute);
-  }
-
-  .game {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  .game-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
   
 </style>

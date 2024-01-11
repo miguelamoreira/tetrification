@@ -12,23 +12,57 @@
                 <v-card class="mb-4 pb-4 ma-4 game-card" v-if="playerGames.length > 0" v-for="(game, index) in playerGames" :key="index" @click="redirectToGameDetails(game.gameId)">
                     <v-card-title class="game-card-title" v-if="game.gameId == 1 || game.gameId == 2 || game.gameId == 3 || game.gameId == 4">Top 8</v-card-title>
                     <v-card-title class="game-card-title" v-else>Semi-finals</v-card-title>
-                    <div style="display: flex; justify-content: space-evenly;" class="ma-2 py-2">
-                    <v-btn></v-btn>
-                    <span style="width: 100px;">{{ game.player1 }}</span>
-                    <div style="display: flex; justify-content: space-around;">
-                        <img src="@/assets/images/life1.svg"  style="width: 30%;">
-                        <img src="@/assets/images/life1.svg" style="width: 30%;">
-                        <img src="@/assets/images/life1.svg" style="width: 30%;">
+                    <div class="my-2 py-2 d-flex justify-space-evenly">
+                        <img v-if="getPlayerCountry(game.player1) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="20%">
+                        <img v-else-if="getPlayerCountry(game.player1) === 'USA'" src="@/assets/images/flags/usa.svg" width="20%">
+                        <img v-else src="@/assets/images/flags/tbd_leaderboard.svg" width="20%">
+                        <span style="width: 100px;">{{ game.player1 }}</span>
+                        <div v-if="game.winsPlayer1 === 0" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life1.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer1 === 1" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer1 === 2" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer1 === 3" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                        </div>
                     </div>
-                    </div>
-                    <div style="display: flex; justify-content: space-evenly;" class="mt-6">
-                    <v-btn></v-btn>
-                    <span style="width: 100px;">{{ game.player2 }}</span>
-                    <div style="display: flex; justify-content: space-around;">
-                        <img src="@/assets/images/life1.svg" style="width: 30%;">
-                        <img src="@/assets/images/life1.svg" style="width: 30%;">
-                        <img src="@/assets/images/life1.svg" style="width: 30%;">
-                    </div>
+                    <div class="mt-6 d-flex justify-space-evenly">
+                        <img v-if="getPlayerCountry(game.player2) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="20%">
+                        <img v-else-if="getPlayerCountry(game.player2) === 'USA'" src="@/assets/images/flags/usa.svg" width="20%">
+                        <img v-else src="@/assets/images/flags/tbd_leaderboard.svg" width="20%">
+                        <span style="width: 100px;">{{ game.player2 }}</span>
+                        <div v-if="game.winsPlayer2 === 0" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life1.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer2 === 1" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer2 === 2" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                            <img src="@/assets/images/life1.svg" style="width: 30%;">
+                        </div>
+                        <div v-if="game.winsPlayer2 === 3" class="d-flex justify-space-around">
+                            <img src="@/assets/images/life2.svg"  style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                            <img src="@/assets/images/life2.svg" style="width: 30%;">
+                        </div>
                     </div>
                 </v-card>
             </div>
@@ -46,7 +80,7 @@
                 <p><strong>Style:</strong>{{ player.style }}</p>
                 <p><strong>PB:</strong>{{ player.pb }}</p>
             </div>
-            <div style="display: flex; justify-content: space-between;">
+            <div class="d-flex justify-space-between">
                 <img>
                 <img src="@/assets/images/players/pieces.svg">
             </div>
@@ -101,6 +135,11 @@ import NavBar from '@/components/navbar.vue'
         },
         redirectToGameDetails(gameId) {
             this.$router.push(`/dashboard/game/${gameId}`);
+        },
+        getPlayerCountry(playerName) {
+            const playersStore = usePlayersStore();
+            const player = playersStore.getPlayers.find(p => p.name === playerName);
+            return player ? player.country : 'Unknown';
         },
     },
     mounted() {
