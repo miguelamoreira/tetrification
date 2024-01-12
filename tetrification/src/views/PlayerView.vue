@@ -69,20 +69,27 @@
         </v-col>
         
         <v-col cols="8" style="background-color: var(--vt-c-light-purple-1);">
-            <div>
+            <div class="d-flex">
             <img v-if="player.country == 'USA'" src="@/assets/images/flags/usa.svg">
             <img v-if="player.country == 'Netherlands'" src="@/assets/images/flags/netherlands.svg">
-            <h1>{{ player.name }}</h1>
+            <h1 class="mx-6">{{ player.name }}</h1>
             </div>
             <div>
-                <p><strong>Age:</strong>{{ player.age }}</p>
-                <p><strong>Location:</strong>{{ player.location }}</p>
-                <p><strong>Style:</strong>{{ player.style }}</p>
-                <p><strong>PB:</strong>{{ player.pb }}</p>
+                <p class="py-4"><strong>Age:</strong>{{ player.age }}</p>
+                <p class="py-4"><strong>Location:</strong>{{ player.location }}</p>
+                <p class="py-4"><strong>Style:</strong>{{ player.style }}</p>
+                <p class="py-4"><strong>PB:</strong>{{ player.pb }}</p>
             </div>
-            <div class="d-flex justify-space-between">
-                <img>
-                <img src="@/assets/images/players/pieces.svg">
+            <div class="d-flex justify-space-between py-4">
+                <img src="@/assets/images/players/sidnev.jpeg" width="60%" v-if="player.name === 'SIDNEV'">
+                <img src="@/assets/images/players/fractal.png" width="60%" v-if="player.name === 'FRACTAL'">
+                <img src="@/assets/images/players/scuti.jpeg" width="60%" v-if="player.name === 'SCUTI'">
+                <img src="@/assets/images/players/alext.jpeg" width="60%" v-if="player.name === 'ALEX T'">
+                <img src="@/assets/images/players/dog.png" width="60%" v-if="player.name === 'DOG'">
+                <img src="@/assets/images/players/pixelandy.jpeg" width="60%" v-if="player.name === 'PIXELANDY'">
+                <img src="@/assets/images/players/dengler.jpeg" width="60%" v-if="player.name === 'DENGLER'">
+                <img src="@/assets/images/players/hfulufgus.jpeg" width="60%" v-if="player.name === 'HFULUFGUS'">
+                <img src="@/assets/images/players/pieces.svg" width="50%">
             </div>
         </v-col>
       </v-row>

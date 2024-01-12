@@ -14,14 +14,14 @@
           <h3>Welcome back, <span>{{userStore.getUser.username}}</span>.</h3>
         </div>
         <div class="streak d-flex">
-          <img src="@/assets/images/streak/streak1.svg" v-if="userStore.getUser.streak === 1">
-          <img src="@/assets/images/streak/streak2.svg" v-else-if="userStore.getUser.streak === 2">
-          <img src="@/assets/images/streak/streak3.svg" v-else-if="userStore.getUser.streak === 3">
-          <img src="@/assets/images/streak/streak4.svg" v-else-if="userStore.getUser.streak === 4">
-          <img src="@/assets/images/streak/streak5.svg" v-else-if="userStore.getUser.streak === 5">
-          <img src="@/assets/images/streak/streak6.svg" v-else-if="userStore.getUser.streak === 6">
-          <img src="@/assets/images/streak/streak7.svg" v-else>
-          <h4 class="align-self-end">{{ `x${userStore.getUser.streak}` }}</h4>
+          <img src="@/assets/images/streak/streak1.svg" v-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 1">
+          <img src="@/assets/images/streak/streak2.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 2">
+          <img src="@/assets/images/streak/streak3.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 3">
+          <img src="@/assets/images/streak/streak4.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 4">
+          <img src="@/assets/images/streak/streak5.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 5">
+          <img src="@/assets/images/streak/streak6.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value === 6">
+          <img src="@/assets/images/streak/streak7.svg" v-else-if="userStore.getUser.streak.length > 0 && userStore.getUser.streak[userStore.getUser.streak.length - 1].value >= 7">
+          <h4 class="align-self-end">{{ `x${userStore.getUser.streak[userStore.getUser.streak.length - 1].value}` }}</h4>
         </div>
 
         <!-- Live card -->

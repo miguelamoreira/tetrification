@@ -6,11 +6,11 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     user: null,
     users: [
-      { id: 1, name:'João Silva', username: "joca25", email: 'joao5@email.com', password: "1234", dateOfBirth: "09/12/1998", gender: "Male", country: "Portugal", favouritePlayer: "Fractal", points: 15, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Top Out', avatar: 'avatar1.svg', bets: [], lastLogin: new Date('2024-01-12')},
-      { id: 2, name:'A', username: "unicorn123", email: 'a@email.com', password: "1234", dateOfBirth: "15/08/2003", gender: "Female", country: "Germany", favouritePlayer: "Dengler", points: 12, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Top Out', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-11')},
-      { id: 3, name:'B', username: "tetris_fan", email: 'b@email.com', password: "1234", dateOfBirth: "02/03/1990", gender: "Male", country: "Spain", favouritePlayer: "Dog", points: 10, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-10')},
-      { id: 4, name:'C', username: "girliepoppp", email: 'c@email.com', password: "1234", dateOfBirth: "17/05/2001", gender: "Female", country: "United Kingdom", favouritePlayer: "Sidnev", points: 7, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-09')},
-      { id: 5, name:'Mariana Dias', username: "maridiass", email: 'm@email.com', password: "1234", dateOfBirth: "10/10/1993", gender: "Female", country: "Portugal", favouritePlayer: "Scuti", points: 2, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Mino', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-08')},
+      { id: 1, name:'João Silva', username: "joca25", email: 'joao5@email.com', password: "1234", dateOfBirth: "09/12/1998", gender: "Male", country: "Portugal", favouritePlayer: "Fractal", points: 15, streak: [{date: '2024-01-11', value: 3}], userLevel: 'Top Out', avatar: '@/assets/images/avatars/avatarM.svg', bets: []},
+      { id: 2, name:'A', username: "unicorn123", email: 'a@email.com', password: "1234", dateOfBirth: "15/08/2003", gender: "Female", country: "Germany", favouritePlayer: "Dengler", points: 12, streak: [], userLevel: 'Top Out', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
+      { id: 3, name:'B', username: "tetris_fan", email: 'b@email.com', password: "1234", dateOfBirth: "02/03/1990", gender: "Male", country: "Spain", favouritePlayer: "Dog", points: 10, streak: [], userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatarM.svg', bets: []},
+      { id: 4, name:'C', username: "girliepoppp", email: 'c@email.com', password: "1234", dateOfBirth: "17/05/2001", gender: "Female", country: "United Kingdom", favouritePlayer: "Sidnev", points: 7, streak: [], userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
+      { id: 5, name:'Mariana Dias', username: "maridiass", email: 'm@email.com', password: "1234", dateOfBirth: "10/10/1993", gender: "Female", country: "Portugal", favouritePlayer: "Scuti", points: 2, streak: [], userLevel: 'Mino', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
     ],
   }),
   getters: {
@@ -97,21 +97,25 @@ export const useUserStore = defineStore("user", {
     },
     updateDailyStreak() {
       const currentDate = new Date().toISOString().split('T')[0];
-      const lastLoginDate = this.user.lastLogin.toISOString().split('T')[0];
-      console.log(currentDate);
+      const lastStreak = this.user.streak[this.user.streak.length - 1];
+    
+      if (!lastStreak || lastStreak.date !== currentDate) {
+        if (lastStreak && lastStreak.value > 1) {
+          this.user.streak.push({ date: currentDate, value: lastStreak.value + 1 });
 
-      if (this.user.streak > 1) {
-        if (lastLoginDate == currentDate) {
-          this.user.streak += 1;
+          if (lastStreak.value + 1 == 3 || lastStreak.value + 1 == 4 || lastStreak.value + 1 == 5 || lastStreak.value + 1 == 6 || lastStreak.value + 1 == 7) {
+            this.addPoints(3);
+          } else if (lastStreak.value + 1 > 7) {
+            this.addPoints(4);
+          }
+            
         } else {
-          this.user.streak = 1;
+          this.user.streak.push({ date: currentDate, value: 2 });
+          this.addPoints(2);
         }
-      } 
-
-      this.user.lastLogin = new Date(currentDate);
-
+      }
+    
       console.log('streak', this.user.streak);
-      console.log('last', this.user.lastLogin);
     },
   },
   persist: true,
