@@ -164,7 +164,7 @@
               <v-row class="justify-center mt-8">
                 <v-col cols="6" lg="6" sm="12">
                   <v-card class="card-user d-flex flex-row justify-space-around py-8" @click="redirectToUserDetails(userData[3].id)">
-                    <v-card-title>4</v-card-title>
+                    <h3 class="my-6 font-weight-bold">4</h3>
                     <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[3].gender === 'Male'" width="20%">
                     <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[3].gender === 'Female'" width="20%">
                     <div class="d-flex flex-column justify-space-between text-center">
@@ -176,7 +176,7 @@
                 </v-col>
                 <v-col cols="6" lg="6" sm="12">
                   <v-card class="card-user d-flex flex-row justify-space-around py-8" @click="redirectToUserDetails(userData[4].id)">
-                    <v-card-title>5</v-card-title>
+                    <h3 class="my-6 font-weight-bold">5</h3>
                     <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[3].gender === 'Male'" width="20%">
                     <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[3].gender === 'Female'" width="20%">
                     <div class="d-flex flex-column justify-space-between text-center">
