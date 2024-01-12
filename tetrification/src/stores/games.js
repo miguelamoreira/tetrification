@@ -21,5 +21,18 @@ export const useGameStore = defineStore('game', {
         throw error
       }
     },
+    getWinner(gameId) {
+      const gameEvents = this.getGameEvents(gameId);
+
+      if (gameEvents.length > 0 && gameEvents) {
+        const lastEvent = gameEvents[gameEvents.length - 1];
+
+        if (lastEvent.winsPlayer1 > lastEvent.winsPlayer2) {
+          return lastEvent.player1;
+        } else {
+          return lastEvent.player2;
+        }
+      }
+    }
   },
 })

@@ -11,13 +11,15 @@ export const useUserStore = defineStore("user", {
       { id: 3, name:'B', username: "tetris_fan", email: 'b@email.com', password: "1234", dateOfBirth: "02/03/1990", gender: "Male", country: "Spain", favouritePlayer: "Dog", points: 10, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-10')},
       { id: 4, name:'C', username: "girliepoppp", email: 'c@email.com', password: "1234", dateOfBirth: "17/05/2001", gender: "Female", country: "United Kingdom", favouritePlayer: "Sidnev", points: 7, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-09')},
       { id: 5, name:'Mariana Dias', username: "maridiass", email: 'm@email.com', password: "1234", dateOfBirth: "10/10/1993", gender: "Female", country: "Portugal", favouritePlayer: "Scuti", points: 2, streak: 2, streakImageSrc: '@/assets/images/dashboard/streak2.svg', userLevel: 'Mino', avatar: '@/assets/images/avatars/avatar1.svg', bets: [], lastLogin: new Date('2024-01-08')},
-      ],
+    ],
   }),
   getters: {
     getUser: (state) => state.user,
     getUsers: (state) => state.users,
     getUserId: (state) => (id) => state.users.find((user) => user.id == id),
     isUser: (state) => state.isUserAuthenticated,
+    getImage: (state) => state.avatar,
+    getBet: (state) => state.user.bets,
   },
   actions: {
     login(username, password) {
@@ -30,6 +32,8 @@ export const useUserStore = defineStore("user", {
       } else {
         throw Error("Invalid Data!");
       };
+
+      this.updateDailyStreak()
     },
     signup(name, username, email, password, confirmPassword, dateOfBirth, gender, country, favoritePlayer){
       let userName = this.users.find((user) => user.username == username);
@@ -79,5 +83,36 @@ export const useUserStore = defineStore("user", {
 
       this.user.streakImageSrc = streakImageSrc;
     },
-  },  
+    addOrUpdateBet(gameId, playerBet) {
+      const existingBet = this.user.bets.findIndex(bet => bet.gameId === gameId);
+
+      if (existingBet !== -1) {
+        this.user.bets[existingBet].playerBet = playerBet;
+      } else {
+        this.user.bets.push({ gameId, playerBet });
+      }
+    },
+    addPoints(points) {
+      this.user.points += points;
+    },
+    updateDailyStreak() {
+      const currentDate = new Date().toISOString().split('T')[0];
+      const lastLoginDate = this.user.lastLogin.toISOString().split('T')[0];
+      console.log(currentDate);
+
+      if (this.user.streak > 1) {
+        if (lastLoginDate == currentDate) {
+          this.user.streak += 1;
+        } else {
+          this.user.streak = 1;
+        }
+      } 
+
+      this.user.lastLogin = new Date(currentDate);
+
+      console.log('streak', this.user.streak);
+      console.log('last', this.user.lastLogin);
+    },
+  },
+  persist: true,
 });
