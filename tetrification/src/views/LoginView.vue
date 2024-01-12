@@ -42,6 +42,16 @@
   <img src="@/assets/images/piece_purple.svg" class="position-absolute" style="bottom: 2vh; left: 10vh; margin: 2vh;">
   <img src="@/assets/images/piece_orange.svg" class="position-absolute" style="top: 25vh; right: 20vh; margin: 2vh;">
   <img src="@/assets/images/piece_yellow2.svg" class="position-absolute" style="bottom: 0vh; right: 2vh; margin: 2vh;">
+
+  <v-dialog v-model="modalVisible" width="600">
+    <v-card class="text-center">
+      <v-card-title>{{ modalTitle }}</v-card-title>
+      <v-card-text>{{ modalText }}</v-card-text>
+      <v-card-actions class="mx-auto">
+        <v-btn @click="closeModal" class="btnModal">Close</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -52,6 +62,9 @@ export default {
       userStore: useUserStore(),
       username: '',
       password: '',
+      modalVisible: false,
+      modalTitle: '',
+      modalText: ''
     };
   },
   methods: {
@@ -60,9 +73,19 @@ export default {
 				this.userStore.login(this.username, this.password)
 				this.$router.push({ name: "dashboard" });
 			} catch (error) {
-				alert(`Error: ${error.message}`); 
+				this.showModal('Sign in error', error.message);
+        this.username = ''
+        this.password = ''
 			}
 		},
+    showModal(title, text) {
+      this.modalVisible = true;
+      this.modalTitle = title;
+      this.modalText = text;
+    },
+    closeModal() {
+      this.modalVisible = false;
+    }
   },
 };
 </script>
@@ -75,5 +98,18 @@ export default {
 
   .text {
     font-size: 15vh;
+  }
+
+  .btnModal {
+    background-color: var(--vt-c-medium-purple-3);
+  }
+
+  .btnModal:hover {
+    background-color: var(--vt-c-medium-purple-2);
+  }
+
+  .btnModal:active {
+    background-color: var(--vt-c-medium-purple-1);
+    color: var(--vt-c-white);
   }
 </style>

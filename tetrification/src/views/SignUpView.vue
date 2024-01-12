@@ -12,7 +12,7 @@
       <v-row justify="center" class="justify-center">
         <v-col cols="12" md="6">
       <v-card class="pa-4 pt-8 mt-8" elevation="4" style="z-index: 1; background-color: var(--vt-c-light-orange-1)">
-        <v-card-title class="text-center">
+        <v-card-title class="text-center card-title">
           Welcome to Tetrification
         </v-card-title>
         <v-card-subtitle class="text-center">
@@ -74,6 +74,16 @@
   <img src="@/assets/images/piece_purple.svg" class="position-absolute" style="bottom: 2vh; left: 10vh; margin: 2vh;">
   <img src="@/assets/images/piece_orange.svg" class="position-absolute" style="top: 25vh; right: 20vh; margin: 2vh;">
   <img src="@/assets/images/piece_yellow2.svg" class="position-absolute" style="bottom: 0vh; right: 2vh; margin: 2vh;">
+
+  <v-dialog v-model="modalVisible" width="600">
+      <v-card class="text-center">
+        <v-card-title>{{ modalTitle }}</v-card-title>
+        <v-card-text>{{ modalText }}</v-card-text>
+        <v-card-actions class="mx-auto">
+          <v-btn @click="closeModal" class="btnModal">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+   </v-dialog>
 </template>
 
 <script>
@@ -93,6 +103,9 @@ export default {
       confirmPassword: '',
       loading: false,
       genderOptions: ["Male", "Female", "Other"],
+      modalVisible: false,
+      modalTitle: '',
+      modalText: ''
     };
   },
   methods: {
@@ -109,11 +122,48 @@ export default {
           this.country,
           this.favoritePlayer,
         );
-				this.$router.push({ name: "login" });
+        this.$router.push({ name: "login" });
 			} catch (error) {
-				alert(`Error: ${error.message}`); 
+				this.showModal('Sign up error', error.message)
+        this.name = ''
+        this.username = ''
+        this.date = ''
+        this.gender = null
+        this.country = ''
+        this.favoritePlayer = ''
+        this.email = ''
+        this.password = ''
+        this.confirmPassword = ''
 			}
 		},
+    showModal(title, text) {
+      this.modalVisible = true;
+      this.modalTitle = title;
+      this.modalText = text;
+    },
+    closeModal() {
+      this.modalVisible = false;
+    }
   },
 };
 </script>
+
+<style>
+  .card-title {
+    font-family: Orbitron, sans-serif;
+    font-weight: bold;
+  }
+
+  .btnModal {
+    background-color: var(--vt-c-medium-purple-3);
+  }
+
+  .btnModal:hover {
+    background-color: var(--vt-c-medium-purple-2);
+  }
+
+  .btnModal:active {
+    background-color: var(--vt-c-medium-purple-1);
+    color: var(--vt-c-white);
+  }
+</style>
