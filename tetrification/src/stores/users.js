@@ -6,11 +6,11 @@ export const useUserStore = defineStore("user", {
     isUserAuthenticated: false,
     user: null,
     users: [
-      { id: 1, name:'João Silva', username: "joca25", email: 'joao5@email.com', password: "1234", dateOfBirth: "09/12/1998", gender: "Male", country: "Portugal", favouritePlayer: "Fractal", points: 15, streak: [{date: '2024-01-11', value: 3}], userLevel: 'Top Out', avatar: '@/assets/images/avatars/avatarM.svg', bets: []},
-      { id: 2, name:'A', username: "unicorn123", email: 'a@email.com', password: "1234", dateOfBirth: "15/08/2003", gender: "Female", country: "Germany", favouritePlayer: "Dengler", points: 12, streak: [], userLevel: 'Top Out', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
-      { id: 3, name:'B', username: "tetris_fan", email: 'b@email.com', password: "1234", dateOfBirth: "02/03/1990", gender: "Male", country: "Spain", favouritePlayer: "Dog", points: 10, streak: [], userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatarM.svg', bets: []},
-      { id: 4, name:'C', username: "girliepoppp", email: 'c@email.com', password: "1234", dateOfBirth: "17/05/2001", gender: "Female", country: "United Kingdom", favouritePlayer: "Sidnev", points: 7, streak: [], userLevel: 'Back-to-back', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
-      { id: 5, name:'Mariana Dias', username: "maridiass", email: 'm@email.com', password: "1234", dateOfBirth: "10/10/1993", gender: "Female", country: "Portugal", favouritePlayer: "Scuti", points: 2, streak: [], userLevel: 'Mino', avatar: '@/assets/images/avatars/avatarF.svg', bets: []},
+      { id: 1, name:'João Silva', username: "joca25", email: 'joao5@email.com', password: "1234", dateOfBirth: "09/12/1998", gender: "Male", country: "Portugal", favouritePlayer: "Fractal", points: 15, streak: [{date: '2024-01-11', value: 3}], userLevel: 'Top Out', bets: []},
+      { id: 2, name:'A', username: "unicorn123", email: 'a@email.com', password: "1234", dateOfBirth: "15/08/2003", gender: "Female", country: "Germany", favouritePlayer: "Dengler", points: 12, streak: [], userLevel: 'Top Out', bets: []},
+      { id: 3, name:'B', username: "tetris_fan", email: 'b@email.com', password: "1234", dateOfBirth: "02/03/1990", gender: "Male", country: "Spain", favouritePlayer: "Dog", points: 10, streak: [], userLevel: 'Back-to-back', bets: []},
+      { id: 4, name:'C', username: "girliepoppp", email: 'c@email.com', password: "1234", dateOfBirth: "17/05/2001", gender: "Female", country: "United Kingdom", favouritePlayer: "Sidnev", points: 7, streak: [], userLevel: 'Back-to-back', bets: []},
+      { id: 5, name:'Mariana Dias', username: "maridiass", email: 'm@email.com', password: "1234", dateOfBirth: "10/10/1993", gender: "Female", country: "Portugal", favouritePlayer: "Scuti", points: 2, streak: [], userLevel: 'Mino', bets: []},
     ],
   }),
   getters: {
@@ -35,7 +35,7 @@ export const useUserStore = defineStore("user", {
 
       this.updateDailyStreak()
     },
-    signup(name, username, email, password, confirmPassword, dateOfBirth, gender, country, favoritePlayer){
+    signup(name, username, email, password, confirmPassword, dateOfBirth, gender, country, favouritePlayer){
       let userName = this.users.find((user) => user.username == username);
       let userEmail = this.users.find((user) => user.email == email);
       
@@ -45,7 +45,7 @@ export const useUserStore = defineStore("user", {
       else if (userEmail){
         throw Error('E-mail already linked to an account')
       }
-      else if (name === '' || username === '' || email === '' || password === '' || confirmPassword === '' || dateOfBirth === '' || gender === '' || country === '' || favoritePlayer === ''){
+      else if (name === '' || username === '' || email === '' || password === '' || confirmPassword === '' || dateOfBirth === '' || gender === '' || country === '' || favouritePlayer === ''){
         throw Error('Fill all fields to create your account')
       }
       else if (password != confirmPassword) {
@@ -53,6 +53,7 @@ export const useUserStore = defineStore("user", {
       }
       else {
         let newUser = { 
+          id: this.users.length + 1,
           name: name, 
           username: username, 
           email: email, 
@@ -60,16 +61,15 @@ export const useUserStore = defineStore("user", {
           dateOfBirth: dateOfBirth,
           gender: gender,
           country: country,
-          favoritePlayer: favoritePlayer, 
+          userLevel: 'Mino',
+          favouritePlayer: favouritePlayer, 
           points: 0,
-          streak: 1,
-          streakImageSrc: '@/assets/images/dashboard/streak1.svg'
+          streak: [],
         };
         this.users.push(newUser);
         console.log(this.users)
         this.user = newUser;
         this.isUserAuthenticated = true;
-        alert('account created')
       }
     },
     logout() {
@@ -110,12 +110,13 @@ export const useUserStore = defineStore("user", {
           }
             
         } else {
-          this.user.streak.push({ date: currentDate, value: 2 });
+          this.user.streak.push({ date: currentDate, value: 1 });
           this.addPoints(2);
         }
       }
     
       console.log('streak', this.user.streak);
+      console.log('user', this.user);
     },
   },
   persist: true,

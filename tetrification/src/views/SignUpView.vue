@@ -37,7 +37,7 @@
                 <v-text-field v-model="country" label="Country"></v-text-field>
               </v-col>
               <v-col cols="6">
-                <v-text-field v-model="favoritePlayer" label="Favourite player"></v-text-field>
+                <v-combobox v-model="favouritePlayer" :items="favouritePlayerOptions" label="Favourite player"></v-combobox>
               </v-col>
             </v-row>
             <v-divider></v-divider>
@@ -97,7 +97,8 @@ export default {
       date: '',
       gender: null,
       country: '',
-      favoritePlayer: '',
+      favouritePlayerOptions: ["SIDNEV", "FRACTAL", "ALEX T", "PIXELANDY", "SCUTI", "HFULUFGUS", "DOG", "DENGLER"],
+      favouritePlayer: null,
       email: '',
       password: '',
       confirmPassword: '',
@@ -120,7 +121,7 @@ export default {
           this.date,
           this.gender,
           this.country,
-          this.favoritePlayer,
+          this.favouritePlayer,
         );
         this.$router.push({ name: "login" });
 			} catch (error) {
@@ -130,7 +131,7 @@ export default {
         this.date = ''
         this.gender = null
         this.country = ''
-        this.favoritePlayer = ''
+        this.favouritePlayer = ''
         this.email = ''
         this.password = ''
         this.confirmPassword = ''
