@@ -304,8 +304,8 @@ methods: {
     const maxPoints = Math.max(pointsPlayer1, pointsPlayer2);
     const minPoints = Math.min(pointsPlayer1, pointsPlayer2);
 
-    const heightPercentagePlayer2 = (minPoints / maxPoints) * 100;
-    const heightPercentagePlayer1 = 100 - heightPercentagePlayer2;
+    const heightPercentagePlayer1 = (minPoints / maxPoints) * 100;
+    const heightPercentagePlayer2 = 100 - heightPercentagePlayer1;
 
     return {
       player1: heightPercentagePlayer1 + '%',

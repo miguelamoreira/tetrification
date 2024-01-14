@@ -21,27 +21,15 @@ export const useFAQStore = defineStore("faq", {
         },
         {
             question: 'Which results can I see on Tetrification?',
-            answer: 'You can see the results of past matches and of live matches. All these matches belong to the top-16 of the 48-seed tournament. On the Leaderboard section, you can see the rankings of the qualifying round, round 0, round 1 and top-16.'
+            answer: 'You can see the results of past matches and of live matches. All these matches belong to the top-8.'
         },
         {
             question: 'How many rounds does each phase of the tournament have?',
             answer: 'The Qualifying Round, as the name suggests, only has one round to determine which players will participate in which following tournament. The 48-seed Gold Tournament has four rounds - round 0, round 1, top-16 and top-8. The 32-seed Silver Tournament has three rounds – round 0, round 1, top-8.'
         },
         {
-            question: 'Which data is displayed on my profile? And can I limit it?',
-            answer: 'You can set your profile settings to public or private. If you set your profile to public, other users will be able to see your avatar, username, nationality, age, favorite player, the number of points you currently have, your user level and your position on the users’ leaderboard. If you set your profile to private, other users won’t be able to see the entirely of your profile and will get a warning that your profile was set to private.'
-        },
-        {
-            question: 'Can I get notifications? What type of notifications can I get?',
-            answer: 'You can choose to get 4 different kinds of notifications: notifications about the end of a game that you are tracking, notifications with the result of an enquiry that you may have answered, notifications with points that you may have gain and notifications about an upgrade of your user level.'
-        },
-        {
             question: 'Can I see any information about the players?',
             answer: 'Yes! Each player participating on the tournament has their own profile page. This page contains information such as their player’s name, their real name, a brief description, their age, their location/nationality, their game style, and their personal best record. Besides this info, there’s a list with every match that they are associated with.'
-        },
-        {
-            question: 'Can I track games so that I don’t miss any update?',
-            answer: 'Yes! You can track games and they will be displayed on a section on your profile page. Depending on your notifications settings, you will receive information relative to the end of a tracked game or the result of an enquiry about a game.'
         }
       ],
   }),
