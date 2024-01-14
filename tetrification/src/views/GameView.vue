@@ -28,7 +28,7 @@
               <span>Points: {{ pointsPlayer1 }}</span>
               <div class="screenBg d-flex justify-content-center">
                 <div class="screen mx-6 d-flex flex-column-reverse align-items-center">
-                  <div class="screenProgress" id="progressPlayer1" :style="{ height: calculateProgressHeight(pointsPlayer1, pointsPlayer2).player1 }"></div>
+                  <div class="screenProgress" id="progressPlayer1" :style="{ height: calculateProgressHeight(pointsPlayer1, pointsPlayer2).player1, backgroundColor: alterProgressColor().player1 }"></div>
                 </div>
               </div>
               <span>Level: {{ levelPlayer1 }}</span>
@@ -68,7 +68,7 @@
               <span>Points: {{ pointsPlayer2 }}</span>
               <div class="screenBg d-flex justify-content-center">
                 <div class="screen mx-6 d-flex flex-column-reverse align-items-center">
-                  <div class="screenProgress" id="progressPlayer2" :style="{ height: calculateProgressHeight(pointsPlayer2, pointsPlayer1).player2 }"></div>
+                  <div class="screenProgress" id="progressPlayer2" :style="{ height: calculateProgressHeight(pointsPlayer2, pointsPlayer1).player2, backgroundColor: alterProgressColor().player2 }"></div>
                 </div>
               </div>
               <span>Level: {{ levelPlayer2 }}</span>
@@ -246,7 +246,7 @@ methods: {
   async handleClickBets() {
     this.games = this.gameStore.getGameEvents(this.gameId);
 
-    if (this.gameId == 1 || this.gameId == 2 || this.gameId == 3 || this.gameId == 4) {
+    if (this.gameId == 1 || this.gameId == 2 || this.gameId == 3 || this.gameId == 4 || this.gameId == 7) {
       this.btnPlayer1 = true;
       this.btnPlayer2 = true;
     } else if (this.gameId == 5 || this.gameId == 6) {
@@ -304,14 +304,42 @@ methods: {
     const maxPoints = Math.max(pointsPlayer1, pointsPlayer2);
     const minPoints = Math.min(pointsPlayer1, pointsPlayer2);
 
-    const heightPercentagePlayer1 = (minPoints / maxPoints) * 100;
-    const heightPercentagePlayer2 = 100 - heightPercentagePlayer1;
+    const heightPercentagePlayer2 = (minPoints / maxPoints) * 100;
+    const heightPercentagePlayer1 = 100 - heightPercentagePlayer2;
 
     return {
       player1: heightPercentagePlayer1 + '%',
       player2: heightPercentagePlayer2 + '%',
     };
   },
+  alterProgressColor() {
+      const percentagePlayer1 = parseFloat(this.calculateProgressHeight(this.pointsPlayer1, this.pointsPlayer2).player1);
+      const percentagePlayer2 = parseFloat(this.calculateProgressHeight(this.pointsPlayer2, this.pointsPlayer1).player2);
+
+      let colorPlayer1 = '';
+      let colorPlayer2 = '';
+
+      if (percentagePlayer1 < 30) {
+        colorPlayer1 = 'green'; 
+      } else if (percentagePlayer1 < 70) {
+        colorPlayer1 = 'yellow'; 
+      } else {
+        colorPlayer1 = 'red'; 
+      }
+
+      if (percentagePlayer2 < 30) {
+        colorPlayer2 = 'green'; 
+      } else if (percentagePlayer2 < 70) {
+        colorPlayer2 = 'yellow'; 
+      } else {
+        colorPlayer2 = 'red'; 
+      }
+
+      return {
+        player1: colorPlayer1,
+        player2: colorPlayer2,
+      }
+    },
   showModal(title, text) {
     this.modalVisible = true;
     this.modalTitle = title;
@@ -348,10 +376,6 @@ mounted() {
   height: 80%;
   width: 90%;
   background-color: var(--vt-c-white);
-}
-
-.screenProgress {
-  background-color: aqua;
 }
 
 .btnBet {
