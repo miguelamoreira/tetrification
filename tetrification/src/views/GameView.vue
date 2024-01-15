@@ -307,6 +307,28 @@ methods: {
     const heightPercentagePlayer1 = (minPoints / maxPoints) * 100;
     const heightPercentagePlayer2 = 100 - heightPercentagePlayer1;
 
+    const win1Player1 = this.games.find(game => game.winsPlayer1 === 1);
+    const win2Player1 = this.games.find(item => item.winsPlayer1 === 2);
+    const win3Player1 = this.games.find(item => item.winsPlayer1 === 3);
+
+    const win1Player2 = this.games.find(game => game.winsPlayer2 === 1);
+    const win2Player2 = this.games.find(item => item.winsPlayer2 === 2);
+    const win3Player2 = this.games.find(item => item.winsPlayer2 === 3);
+    
+    if (win1Player1 && win1Player1.minute == this.minutes || win2Player1 && win2Player1.minute == this.minutes || win3Player1 && win3Player1.minute == this.minutes) {
+      return {
+        player1: 50 + '%',
+        player2: 100 + '%',
+      }
+    }
+
+    if (win1Player2 && win1Player2.minute == this.minutes || win2Player2 && win2Player2.minute == this.minutes || win3Player2 && win3Player2.minute == this.minutes) {
+      return {
+        player1: 100 + '%',
+        player2: 50 + '%',
+      }
+    }
+
     return {
       player1: heightPercentagePlayer1 + '%',
       player2: heightPercentagePlayer2 + '%',
