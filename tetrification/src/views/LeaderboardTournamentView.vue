@@ -14,10 +14,10 @@
 
             <div class="navbar2 d-flex my-4">
               <button @click="toggleSection('tournament')">
-                <h3 class="mr-6" :class="{ 'active-text': showTournament }">Tournament</h3>
+                <h2 class="mr-6" :class="{ 'active-text': showTournament }">Tournament</h2>
               </button>
               <button @click="toggleSection('users')">
-                <h3 class="mr-6" :class="{ 'active-text': showUsers }">Users</h3>
+                <h2 class="mr-6" :class="{ 'active-text': showUsers }">Users</h2>
               </button>
             </div>
 
