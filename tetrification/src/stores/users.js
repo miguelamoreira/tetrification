@@ -76,13 +76,6 @@ export const useUserStore = defineStore("user", {
       this.isUserAuthenticated = false;
       this.user = null;
     },
-    updateStreak() {
-      const streakNumber = this.user.streak;
-
-      const streakImageSrc = require(`@/assets/images/dashboard/streak${streakNumber}.svg`);
-
-      this.user.streakImageSrc = streakImageSrc;
-    },
     addOrUpdateBet(gameId, playerBet) {
       const existingBet = this.user.bets.findIndex(bet => bet.gameId === gameId);
 
