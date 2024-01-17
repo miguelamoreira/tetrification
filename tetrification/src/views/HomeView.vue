@@ -7,7 +7,7 @@
         <v-btn style="color: var(--vt-c-medium-purple-1)" @click="scrollToSection('sectionTetris')">Tetris</v-btn>
         <v-btn style="color: var(--vt-c-medium-purple-1)" @click="scrollToSection('sectionTournament')">Tournament</v-btn>
         <v-btn style="color: var(--vt-c-medium-purple-1)" @click="scrollToSection('sectionFAQ')">FAQ</v-btn>
-        <v-btn :to="{ name: 'login' }" style="background-color: var(--vt-c-medium-blue-1); color: var(--vt-c-dark-purple-1)">Login</v-btn>
+        <v-btn :to="{ name: 'login' }" style="background-color: var(--vt-c-medium-blue-1); color: var(--vt-c-dark-purple-1);">Login</v-btn>
       </v-app-bar>
     </v-container>
     <v-container id="sectionHero" class="text-center fill-height" style="position: relative;">
@@ -16,12 +16,14 @@
         <br>
         <p>Join Tetrification to never miss an <br>update on the world’s biggest Tetris competition</p>
         <br>
-        <v-btn style="background-color: var(--vt-c-medium-blue-1)" :to="{ name: 'signup' }">Join</v-btn>
+        <v-btn style="background-color: var(--vt-c-medium-blue-1); color: var(--vt-c-dark-purple-1);" :to="{ name: 'signup' }">Join</v-btn>
+        <br>
+        <v-btn icon="mdi-menu-down" class="ma-8" :elevation="0" @click="scrollToSection('sectionTetris')"></v-btn>
       </div>
       <img src="@/assets/images/landingpage.svg" style="width: 100%; height: auto; max-width: none; position: relative; z-index: 0;" class="pt-8">
     </v-container>
     <v-container id="sectionTetris" style="width:100%;max-width: none; position: relative; background-color: var(--vt-c-white-mute);" class="full-height pt-12">
-      <v-carousel hide-delimiters class="d-flex align-items-center justify-content-ceter"> 
+      <v-carousel :show-arrows="false" hide-delimiter-background class="d-flex align-items-center justify-content-center" color="var(--vt-c-medium-blue-1)" delimiter-icon="mdi-square"> 
         <v-carousel-item>
           <div class="carousel text-center mx-auto pa-12 py-lg-16">
             <h3 class="mb-12 mb-sm-4  font-weight-bold" style="color: var(--vt-c-medium-purple-1)">History of Tetris</h3>
@@ -50,7 +52,7 @@
         </v-carousel-item>
         <v-carousel-item>
           <div class="carousel text-center mx-auto pa-12 py-lg-16">
-            <h3 class="mb-12 mb-sm-4 font-weight-bold">Did you know?</h3>
+            <h3 class="mb-12 mb-sm-4 font-weight-bold" style="color: var(--vt-c-dark-blue-1);">Did you know?</h3>
             <p class="mb-8 mb-sm-4">
               According to the Guinness World Records, Tetris is one of the top-selling videogames of all time.
             </p>
@@ -63,6 +65,7 @@
       </v-carousel>
     </v-container>
     <v-container id="sectionTournament">
+      <img src="@/assets/images/landing/piece_purple.svg" style="position: absolute; left: 0vh;">
       <div class="divCTWC ml-lg-auto pa-8 d-flex align-center">
         <img src="@/assets/images/ctwc.svg" style="margin-right: 16px; width: 25%;">
         <div>
@@ -79,20 +82,22 @@
         </div>
       </div>
       <div class="divHistory mr-lg-auto pa-8 d-flex align-center">
-      <div>
-        <h3 class="font-weight-bold mb-8">History</h3>
-        <p class="mb-8">
-          The CTWC was funded in 2010 by a former champion of the United States National Tetris Championship, Robin Mihara. 
-          The first edition of the tournament had as few as eight contestants but over the years the number has increased exponentially.
-          The 2022 version of the tournament had 48 participants.
-        </p>
-        <p class="mb-8">
-          Since 2022, the CTWC created awards the winner of the tournament with the Jonas Neubauer Memorial Trophy. 
-          The trophy is named after a former seven-time winner of the competition.
-        </p>
-      </div>
-      <img src="@/assets/images/history.svg" style="margin-left: 16px; width: 25%;">
+        <div>
+          <h3 class="font-weight-bold mb-8">History</h3>
+          <p class="mb-8">
+            The CTWC was funded in 2010 by a former champion of the United States National Tetris Championship, Robin Mihara. 
+            The first edition of the tournament had as few as eight contestants but over the years the number has increased exponentially.
+            The 2022 version of the tournament had 48 participants.
+          </p>
+          <p class="mb-8">
+            Since 2022, the CTWC created awards the winner of the tournament with the Jonas Neubauer Memorial Trophy. 
+            The trophy is named after a former seven-time winner of the competition.
+          </p>
+        </div>
+        <img src="@/assets/images/history.svg" style="margin-left: 16px; width: 25%;">
     </div>
+    <img src="@/assets/images/landing/piece_yellow.svg" style="position: absolute; right: 5vh; top: 265vh;">
+    <img src="@/assets/images/landing/piece_orange.svg" style="position: absolute; left: 10vh">
     <div class="divRules ml-lg-auto pa-8 d-flex align-center">
       <img src="@/assets/images/rules.svg" style="margin-right: 16px; width: 25%;">
       <div>
@@ -122,17 +127,21 @@
     </div>
     </v-container>
     <v-container id="sectionFAQ">
+      <img src="@/assets/images/landing/piece_blue.svg" style="position: absolute; left: 0vh;">
+      <img src="@/assets/images/landing/piece_purple2.svg" style="position: absolute; right: 5vh; bottom: 100vh">
       <v-row justify="center" class="justify-center">
         <v-col cols="12" md="6">
-          <v-card style="background-color: var(--vt-c-medium-grey-1); " class="card-faq mb-12 pa-8">
-            <v-card-title class="text-center">FAQ</v-card-title>
+          <v-card style="background-color: var(--vt-c-medium-grey-1); " class="card-faq mb-12 pa-8 text-center">
+            <h3 class="font-weight-bold mb-8">FAQ</h3>
             <v-expansion-panels v-for="(faq, index) in faqs" :key="index" class="mb-4">
-              <v-expansion-panel :title="faq.question" :text="faq.answer"></v-expansion-panel>
+              <v-expansion-panel :title="faq.question" :text="faq.answer" class="my-3"></v-expansion-panel>
             </v-expansion-panels>
           </v-card>
         </v-col>
         <img src="@/assets/images/footer.svg" style="width: 100%; height: auto; max-width: none; position: relative; z-index: 0;">
       </v-row>
+      <img src="@/assets/images/landing/piece_yellow2.svg" style="position: absolute; left: 15vh; bottom: 50vh">
+      <img src="@/assets/images/landing/piece_orange2.svg" style="position: absolute; right: 0vh; bottom: 40vh">
     </v-container>
   </v-app>
 </template>
@@ -162,6 +171,7 @@ export default {
 </script>
 
 <style>
+
   h1 {
     font-family: Orbitron, sans-serif;
     font-size: 6vh;
@@ -169,7 +179,7 @@ export default {
   }
 
   h3 {
-    color: var(--vt-c-dark-blue-1);
+    font-family: Orbitron, sans-serif;
     font-size: 4vh;
   }
 
@@ -182,6 +192,14 @@ export default {
     width: 85%;
     padding: 2vh 5vh;
     margin: 7.5vh 0;
+  }
+
+  #sectionTournament h3 {
+    color: var(--vt-c-dark-blue-1);
+  }
+
+  #sectionFAQ h3 {
+    color: var(--vt-c-medium-purple-1);
   }
 
   .divCTWC {

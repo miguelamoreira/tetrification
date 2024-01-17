@@ -34,9 +34,9 @@
             <img v-if="getPlayerCountry(game.player1) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="10%">
             <img v-else-if="getPlayerCountry(game.player1) === 'USA'" src="@/assets/images/flags/usa.svg" width="10%">
             <span>{{ game.player1 }}</span>
-            <h3>{{ game.pointsPlayer1 }}</h3>
+            <h2>{{ game.pointsPlayer1 }}</h2>
             <span>vs</span>
-            <h3>{{ game.pointsPlayer2 }}</h3>
+            <h2>{{ game.pointsPlayer2 }}</h2>
             <span>{{ game.player2 }}</span>
             <img v-if="getPlayerCountry(game.player2) === 'Netherlands'" src="@/assets/images/flags/netherlands.svg" width="10%">
             <img v-else-if="getPlayerCountry(game.player2) === 'USA'" src="@/assets/images/flags/usa.svg" width="10%">

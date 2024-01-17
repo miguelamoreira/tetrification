@@ -9,7 +9,7 @@ export const useFAQStore = defineStore("faq", {
         },
         {
             question: 'How can I gain points?',
-            answer: 'Each day that you log into your account, you gain a certain number of points. This amount depends on the number of consecutive days that you log in. The bigger the streak of days logged, the bigger the number of points you gain.<br>o	You can also get points by answering correctly to the enquiry present on the live matches pages. Beware that if you answer incorrectly, you lose a point.'
+            answer: 'Each day that you log into your account, you gain a certain number of points. This amount depends on the number of consecutive days that you log in. The bigger the streak of days logged, the bigger the number of points you gain. You can also get points by answering correctly to the enquiry present on the live matches pages. Beware that if you answer incorrectly, you lose a point.'
         },
         {
             question: 'What’s the meaning of user’s level on my profile?',
