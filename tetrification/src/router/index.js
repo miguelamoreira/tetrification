@@ -33,37 +33,37 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
-      meta: { requiresAuth: true },
+      //meta: { requiresAuth: true },
     },
     {
       path: '/dashboard/game/:gameId',
       name: 'game',
       component: GameView,
-      meta: { requiresAuth: true }
+      //meta: { requiresAuth: true }
     },
     {
       path: '/dashboard/game/:gameId/:playerId',
       name: 'player',
       component: PlayerView,
-      meta: { requiresAuth: true }
+      //meta: { requiresAuth: true }
     },
     {
       path: '/leaderboard',
       name: 'leaderboard',
       component: LeaderboardView,
-      meta: { requiresAuth: true},
+      //meta: { requiresAuth: true},
     }, 
     {
       path: '/leaderboard/:userId',
       name: 'user profile',
       component: UserView,
-      meta: { requiresAuth: true},
+      //meta: { requiresAuth: true},
     }, 
     {
       path: '/profile',
       name: 'profile',
       component: ProfileView,
-      meta: { requiresAuth: true},
+      //meta: { requiresAuth: true},
     }, 
     {
       path: '/:pathMatch(.*)*',
@@ -73,13 +73,13 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from) => {
-  if (to.meta.requiresAuth && !useUserStore().isUser) {
-    return {
-      path: "/login",
-      query: { redirect: to.fullPath },
-    };
-  }
-});
+//router.beforeEach((to, from) => {
+//  if (to.meta.requiresAuth && !useUserStore().isUser) {
+//    return {
+//      path: "/login",
+//      query: { redirect: to.fullPath },
+//    };
+//  }
+//});
 
 export default router
