@@ -157,8 +157,7 @@ import NavBar from '@/components/navbar.vue'
 
 <style scoped>
   .playerDetails {
-    width: 100%;
-    max-width: 1550px;
+    max-width: 100%;
 }
 
 .game-card {

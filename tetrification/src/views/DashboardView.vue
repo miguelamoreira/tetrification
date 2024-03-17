@@ -272,8 +272,7 @@ export default {
 
 <style scoped>
   .dashboard {
-    width: 100%;
-    max-width: 1550px;
+    max-width: 100%;
   }
 
   h3 span {

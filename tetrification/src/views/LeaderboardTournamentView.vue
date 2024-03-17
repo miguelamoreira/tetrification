@@ -244,7 +244,6 @@
 
 <style scoped>
   .leaderboard {
-    width: 100%;
     max-width: 100%;
 }
 

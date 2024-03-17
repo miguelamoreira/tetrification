@@ -216,8 +216,7 @@ export default {
 
   @media (min-width: 1024px) {
     #sectionHero, #sectionTetris ,#sectionTournament, #sectionFAQ {
-      width: 100%; 
-      max-width: 1550px; 
+      max-width: 100%; 
       margin: 0 auto;
     }
   }

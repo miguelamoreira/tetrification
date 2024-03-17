@@ -380,8 +380,7 @@ mounted() {
 
 <style scoped>
 .gameViewer {
-  width: 100%;
-  max-width: 1550px;
+  max-width: 100%;
 }
 
 .gameboys {

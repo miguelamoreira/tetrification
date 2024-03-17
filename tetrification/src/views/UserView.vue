@@ -95,8 +95,7 @@
 
 <style scoped>
   .profile {
-    width: 100%;
-    max-width: 1550px;
+    max-width: 100%;
   }
   .gamificationElements {
     background-color: var(--vt-c-light-yellow-1);
