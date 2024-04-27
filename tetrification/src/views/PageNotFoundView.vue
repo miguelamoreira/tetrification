@@ -22,13 +22,5 @@
 
 <script>
 import NavBar from '@/components/navbar.vue'
-
-export default {
-  components: {
-    NavBar,
-  },
-  data() {
-    return {};
-  },
-};
+export default{components:{NavBar,},data(){return{}},}
 </script>

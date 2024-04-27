@@ -55,39 +55,9 @@
 </template>
 
 <script>
-import { useUserStore } from '@/stores/users';
-export default {
-  data() {
-    return {
-      userStore: useUserStore(),
-      username: '',
-      password: '',
-      modalVisible: false,
-      modalTitle: '',
-      modalText: ''
-    };
-  },
-  methods: {
-    login() {
-			try {
-				this.userStore.login(this.username, this.password)
-				this.$router.push({ name: "dashboard" });
-			} catch (error) {
-				this.showModal('Sign in error', error.message);
-        this.username = ''
-        this.password = ''
-			}
-		},
-    showModal(title, text) {
-      this.modalVisible = true;
-      this.modalTitle = title;
-      this.modalText = text;
-    },
-    closeModal() {
-      this.modalVisible = false;
-    }
-  },
-};
+import{useUserStore}from '@/stores/users';export default{data(){return{userStore:useUserStore(),username:'',password:'',modalVisible:!1,modalTitle:'',modalText:''}},methods:{login(){try{this.userStore.login(this.username,this.password)
+this.$router.push({name:"dashboard"})}catch(error){this.showModal('Sign in error',error.message);this.username=''
+this.password=''}},showModal(title,text){this.modalVisible=!0;this.modalTitle=title;this.modalText=text},closeModal(){this.modalVisible=!1}},}
 </script>
 
 <style>

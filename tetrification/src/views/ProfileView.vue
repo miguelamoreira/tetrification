@@ -93,48 +93,7 @@ import { useUserStore } from "@/stores/users";
 import NavBar from "@/components/navbar.vue";
 
 export default {
-components: {
-  NavBar,
-},
-data() {
-  return {
-    userStore: useUserStore(),
-    avatar: avatar,
-    modalVisible: false,
-    modalTitle: '',
-    modalText: ''
-  };
-},
-computed: {
-  user() {
-    return this.userStore.getUser;
-  },
-  orderedUsers() {
-    return this.userStore.getUsers.slice().sort((a, b) => b.points - a.points);
-  },
-  userRankingPosition() {
-    const userIndex = this.orderedUsers.findIndex((u) => u.id === this.user.id);
-    return userIndex + 1;
-  },
-},
-methods: {
-  logout() {
-    this.showModal('Logout', 'Do you really want to logout?');
-  },
-  showModal(title, text) {
-    this.modalVisible = true;
-    this.modalTitle = title;
-    this.modalText = text;
-  },
-  confirmModal() {
-    this.userStore.logout();
-    this.$router.push({ name: "home" });
-  },
-  cancelModal() {
-    this.modalVisible = false;
-  }
-},
-};
+  components:{NavBar,},data(){return{userStore:useUserStore(),avatar:avatar,modalVisible:!1,modalTitle:'',modalText:''}},computed:{user(){return this.userStore.getUser},orderedUsers(){return this.userStore.getUsers.slice().sort((a,b)=>b.points-a.points)},userRankingPosition(){const userIndex=this.orderedUsers.findIndex((u)=>u.id===this.user.id);return userIndex+1},},methods:{logout(){this.showModal('Logout','Do you really want to logout?')},showModal(title,text){this.modalVisible=!0;this.modalTitle=title;this.modalText=text},confirmModal(){this.userStore.logout();this.$router.push({name:"home"})},cancelModal(){this.modalVisible=!1}},}
 </script>
 
 <style scoped>

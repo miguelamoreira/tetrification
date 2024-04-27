@@ -81,14 +81,7 @@
                 <p class="py-4"><strong>PB:</strong>{{ player.pb }}</p>
             </div>
             <div class="d-flex justify-space-between py-4">
-                <img src="@/assets/images/players/sidnev.jpeg" width="60%" v-if="player.name === 'SIDNEV'">
-                <img src="@/assets/images/players/fractal.png" width="60%" v-if="player.name === 'FRACTAL'">
-                <img src="@/assets/images/players/scuti.jpeg" width="60%" v-if="player.name === 'SCUTI'">
-                <img src="@/assets/images/players/alext.jpeg" width="60%" v-if="player.name === 'ALEX T'">
-                <img src="@/assets/images/players/dog.png" width="60%" v-if="player.name === 'DOG'">
-                <img src="@/assets/images/players/pixelandy.jpeg" width="60%" v-if="player.name === 'PIXELANDY'">
-                <img src="@/assets/images/players/dengler.jpeg" width="60%" v-if="player.name === 'DENGLER'">
-                <img src="@/assets/images/players/hfulufgus.jpeg" width="60%" v-if="player.name === 'HFULUFGUS'">
+                <img :src="`/src/assets/images/players/${player.image}`" width="60%" >
                 <img src="@/assets/images/players/pieces.svg" width="50%">
             </div>
         </v-col>
@@ -97,63 +90,10 @@
 </template>
   
 <script>
-import { usePlayersStore } from '@/stores/players';
-import { useGameStore } from '@/stores/games'
+import{usePlayersStore}from '@/stores/players';import{useGameStore}from '@/stores/games'
 import NavBar from '@/components/navbar.vue'
-  
-  export default {
-    components: {
-      NavBar,
-    },
-    data() {
-      return {
-        playerStore: usePlayersStore(),
-        gameStore: useGameStore(),
-        playerId: null,
-        playerGames: [],
-      };
-    },
-    computed: {
-        player() {
-            this.playerId = this.$route.params.playerId;
-            return this.playerStore.getPlayerId(this.playerId);
-        },
-        games() {
-            return this.gameStore.getGames;
-        },
-    },
-    methods: {
-        getPlayerGames() {
-            const allGames = this.games.filter(game => game.player1 === this.player.name || game.player2 === this.player.name);
-            const pastGamesId = [1, 2, 3, 4];
-            const otherGamesId = [5, 6];
-
-            const pastGames = pastGamesId.map(gameId => {
-                const gamesId = allGames.filter(game => game.gameId === gameId);
-                return gamesId.length > 0 ? gamesId[gamesId.length - 1] : null;
-            }).filter(game => game !== null);
-
-            const otherGames = otherGamesId.map(gameId => {
-                const gamesId = allGames.filter(game => game.gameId === gameId);
-                return gamesId.length > 0 ? gamesId[0] : null;
-            }).filter(game => game !== null);
-
-            this.playerGames.push(...pastGames, ...otherGames);
-        },
-        redirectToGameDetails(gameId) {
-            this.$router.push(`/dashboard/game/${gameId}`);
-        },
-        getPlayerCountry(playerName) {
-            const playersStore = usePlayersStore();
-            const player = playersStore.getPlayers.find(p => p.name === playerName);
-            return player ? player.country : 'Unknown';
-        },
-    },
-    mounted() {
-        this.getPlayerGames();
-    }
-  };
-  </script>
+export default{components:{NavBar,},data(){return{playerStore:usePlayersStore(),gameStore:useGameStore(),playerId:null,playerGames:[],}},computed:{player(){this.playerId=this.$route.params.playerId;return this.playerStore.getPlayerId(this.playerId)},games(){return this.gameStore.getGames},},methods:{getPlayerGames(){const allGames=this.games.filter(game=>game.player1===this.player.name||game.player2===this.player.name);const pastGamesId=[1,2,3,4];const otherGamesId=[5,6];const pastGames=pastGamesId.map(gameId=>{const gamesId=allGames.filter(game=>game.gameId===gameId);return gamesId.length>0?gamesId[gamesId.length-1]:null}).filter(game=>game!==null);const otherGames=otherGamesId.map(gameId=>{const gamesId=allGames.filter(game=>game.gameId===gameId);return gamesId.length>0?gamesId[0]:null}).filter(game=>game!==null);this.playerGames.push(...pastGames,...otherGames)},redirectToGameDetails(gameId){this.$router.push(`/dashboard/game/${gameId}`)},getPlayerCountry(playerName){const playersStore=usePlayersStore();const player=playersStore.getPlayers.find(p=>p.name===playerName);return player?player.country:'Unknown'},},mounted(){this.getPlayerGames()}}
+</script>
 
 <style scoped>
   .playerDetails {

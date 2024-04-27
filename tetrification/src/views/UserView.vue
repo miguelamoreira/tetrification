@@ -64,33 +64,7 @@
 </template>
 
 <script>
-  import { useUserStore } from "@/stores/users";
-  import NavBar from "@/components/navbar.vue";
-
-  export default {
-    components: {
-      NavBar,
-    },
-    data() {
-      return {
-        userStore: useUserStore(),
-        userId: null,
-      };
-    },
-    computed: {
-      user() {
-        this.userId = this.$route.params.userId;
-        return this.userStore.getUserId(this.userId);
-      },
-      orderedUsers() {
-        return this.userStore.getUsers.slice().sort((a, b) => b.points - a.points);
-      },
-      userRankingPosition() {
-        const userIndex = this.orderedUsers.findIndex((u) => u.id === this.user.id);
-        return userIndex + 1;
-      },
-    },
-  };
+import{useUserStore}from "@/stores/users";import NavBar from "@/components/navbar.vue";export default{components:{NavBar,},data(){return{userStore:useUserStore(),userId:null,}},computed:{user(){this.userId=this.$route.params.userId;return this.userStore.getUserId(this.userId)},orderedUsers(){return this.userStore.getUsers.slice().sort((a,b)=>b.points-a.points)},userRankingPosition(){const userIndex=this.orderedUsers.findIndex((u)=>u.id===this.user.id);return userIndex+1},},}
 </script>
 
 <style scoped>

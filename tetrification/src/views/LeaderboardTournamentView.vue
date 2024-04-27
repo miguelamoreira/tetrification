@@ -195,51 +195,8 @@
 </template>
   
 <script>
-  import { useUserStore } from '@/stores/users';
-  import { useLeaderStore } from '@/stores/leaderboard';
-  import NavBar from '@/components/navbar.vue'
-  
-  export default {
-    components: {
-      NavBar,
-    },
-    data() {
-      return {
-        userStore: useUserStore(),
-        leaderboardStore: useLeaderStore(),
-        leaderboardData: null,
-        userData: null,
-        showTournament: true,
-        showUsers: false,
-      };
-    },
-    computed: {
-      orderedUsers() {
-        return this.userStore.getUsers.slice().sort((a, b) => b.points - a.points).slice(0, 5);
-      },
-    },
-    methods: {
-      toggleSection(section) {
-        this.showTournament = section === 'tournament';
-        this.showUsers = section === 'users';
-      },
-      leaderboard() {
-        this.leaderboardData = this.leaderboardStore.getLeader;
-      },
-      users() {
-        this.userData = this.orderedUsers;
-        console.log(this.userData);
-      },
-      redirectToUserDetails(id) {
-        console.log('Redirecting to user details for:', id);
-        this.$router.push(`/leaderboard/${id}`);
-      },
-    },
-    created() {
-      this.leaderboard();
-      this.users();
-    }
-  };
+import{useUserStore}from '@/stores/users';import{useLeaderStore}from '@/stores/leaderboard';import NavBar from '@/components/navbar.vue'
+export default{components:{NavBar,},data(){return{userStore:useUserStore(),leaderboardStore:useLeaderStore(),leaderboardData:null,userData:null,showTournament:!0,showUsers:!1,}},computed:{orderedUsers(){return this.userStore.getUsers.slice().sort((a,b)=>b.points-a.points).slice(0,5)},},methods:{toggleSection(section){this.showTournament=section==='tournament';this.showUsers=section==='users'},leaderboard(){this.leaderboardData=this.leaderboardStore.getLeader},users(){this.userData=this.orderedUsers;console.log(this.userData)},redirectToUserDetails(id){console.log('Redirecting to user details for:',id);this.$router.push(`/leaderboard/${id}`)},},created(){this.leaderboard();this.users()}}
   </script>
 
 <style scoped>
