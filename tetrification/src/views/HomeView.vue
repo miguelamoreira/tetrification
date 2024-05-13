@@ -20,7 +20,7 @@
         <br>
         <v-btn icon="mdi-menu-down" class="ma-8" :elevation="0" @click="scrollToSection('sectionTetris')"></v-btn>
       </div>
-      <img src="@/assets/images/landingpage.webp" style="width: 100%; height: auto; position: relative; z-index: 0;" class="pt-8">
+      <img src="@/assets/images/landingpage.svg" style="width: 1480px; height: auto; position: relative; z-index: 0;" class="pt-8">
     </v-container>
     <v-container id="sectionTetris" style="width:100%;max-width: none; position: relative; background-color: var(--vt-c-white-mute);" class="full-height pt-12">
       <v-carousel :show-arrows="false" hide-delimiter-background class="d-flex align-items-center justify-content-center" color="var(--vt-c-medium-blue-1)" delimiter-icon="mdi-square"> 
@@ -151,50 +151,5 @@ import{useFAQStore}from '@/stores/faq';export default{data(){return{faqStore:use
 </script>
 
 <style>
-  #sectionHero, #sectionTetris ,#sectionTournament, #sectionFAQ {
-      max-width: 100%; 
-      margin: 0 auto;
-    }
-
-  h1 {
-    font-family: Orbitron, sans-serif;
-    font-size: 6vh;
-    font-weight: bold;
-  }
-
-  h3 {
-    font-family: Orbitron, sans-serif;
-    font-size: 4vh;
-  }
-
-  .carousel {
-    width: 60%;
-    background-color: var(--vt-c-white);
-  }
-
-  #sectionTournament div {
-    width: 85%;
-    padding: 2vh 5vh;
-    margin: 7.5vh 0;
-  }
-
-  #sectionTournament h3 {
-    color: var(--vt-c-dark-blue-1);
-  }
-
-  #sectionFAQ h3 {
-    color: var(--vt-c-medium-purple-1);
-  }
-
-  .divCTWC {
-    background-color: var(--vt-c-medium-orange-2);
-  }
-
-  .divHistory {
-    background-color: var(--vt-c-medium-purple-3);
-  }
-
-  .divRules {
-    background-color: var(--vt-c-medium-yellow-1);
-  }
+#sectionHero,#sectionTetris,#sectionTournament,#sectionFAQ{max-width:100%;margin:0 auto}h1{font-family:Orbitron,sans-serif;font-size:6vh;font-weight:700}h3{font-family:Orbitron,sans-serif;font-size:4vh}.carousel{width:60%;background-color:var(--vt-c-white)}#sectionTournament div{width:85%;padding:2vh 5vh;margin:7.5vh 0}#sectionTournament h3{color:var(--vt-c-dark-blue-1)}#sectionFAQ h3{color:var(--vt-c-medium-purple-1)}.divCTWC{background-color:var(--vt-c-medium-orange-2)}.divHistory{background-color:var(--vt-c-medium-purple-3)}.divRules{background-color:var(--vt-c-medium-yellow-1)}
 </style>

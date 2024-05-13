@@ -61,25 +61,5 @@ this.password=''}},showModal(title,text){this.modalVisible=!0;this.modalTitle=ti
 </script>
 
 <style>
-  .card-title {
-    font-family: Orbitron, sans-serif;
-    font-weight: bold;
-  }
-
-  .text {
-    font-size: 15vh;
-  }
-
-  .btnModal {
-    background-color: var(--vt-c-medium-purple-3);
-  }
-
-  .btnModal:hover {
-    background-color: var(--vt-c-medium-purple-2);
-  }
-
-  .btnModal:active {
-    background-color: var(--vt-c-medium-purple-1);
-    color: var(--vt-c-white);
-  }
+.card-title{font-family:Orbitron,sans-serif;font-weight:700}.text{font-size:15vh}.btnModal{background-color:var(--vt-c-medium-purple-3)}.btnModal:hover{background-color:var(--vt-c-medium-purple-2)}.btnModal:active{background-color:var(--vt-c-medium-purple-1);color:var(--vt-c-white)}
 </style>

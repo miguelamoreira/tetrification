@@ -100,21 +100,5 @@ this.confirmPassword=''}},showModal(title,text){this.modalVisible=!0;this.modalT
 </script>
 
 <style>
-  .card-title {
-    font-family: Orbitron, sans-serif;
-    font-weight: bold;
-  }
-
-  .btnModal {
-    background-color: var(--vt-c-medium-purple-3);
-  }
-
-  .btnModal:hover {
-    background-color: var(--vt-c-medium-purple-2);
-  }
-
-  .btnModal:active {
-    background-color: var(--vt-c-medium-purple-1);
-    color: var(--vt-c-white);
-  }
+.card-title{font-family:Orbitron,sans-serif;font-weight:700}.btnModal{background-color:var(--vt-c-medium-purple-3)}.btnModal:hover{background-color:var(--vt-c-medium-purple-2)}.btnModal:active{background-color:var(--vt-c-medium-purple-1);color:var(--vt-c-white)}
 </style>

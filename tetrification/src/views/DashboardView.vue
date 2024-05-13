@@ -152,34 +152,5 @@ return!1})},getPlayerCountry(playerName){const playersStore=usePlayersStore();co
 </script>
 
 <style scoped>
-  .dashboard {
-    max-width: 100%;
-  }
-
-  h3 span {
-    color: var(--vt-c-medium-purple-2);
-  }
-
-  .streak h4 {
-    font-size: 4vh;
-    color: #FBD73A;
-  }
-
-  .game-list {
-    background-color: var(--vt-c-white-mute); 
-    padding: 0; 
-  }
-
-  .btn-game-list {
-    width: 40%;
-    background-color: var(--vt-c-white-mute);
-    color: var(--vt-c-dark-purple-2);
-    box-shadow: none;
-  }
-
-  .btn-game-list:hover, .btn-active  {
-    background-color: var(--vt-c-dark-purple-2);
-    color: var(--vt-c-white-mute);
-  }
-  
+.dashboard{max-width:100%}h3 span{color:var(--vt-c-medium-purple-2)}.streak h4{font-size:4vh;color:#FBD73A}.game-list{background-color:var(--vt-c-white-mute);padding:0}.btn-game-list{width:40%;background-color:var(--vt-c-white-mute);color:var(--vt-c-dark-purple-2);box-shadow:none}.btn-game-list:hover,.btn-active{background-color:var(--vt-c-dark-purple-2);color:var(--vt-c-white-mute)}
 </style>

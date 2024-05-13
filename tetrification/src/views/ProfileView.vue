@@ -97,38 +97,5 @@ export default {
 </script>
 
 <style scoped>
-.profile {
-  max-width: 100%;
-}
-
-.streak h4 {
-  font-size: 4vh;
-  color: #fbd73a;
-}
-
-.gamificationElements {
-  background-color: var(--vt-c-light-yellow-1);
-  padding: 10px 35px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.data {
-  background-color: var(--vt-c-light-orange-2);
-  border: 2px solid var(--vt-c-medium-orange-1);
-  width: 45%;
-}
-
-.btnModal {
-  background-color: var(--vt-c-medium-purple-3);
-}
-
-.btnModal:hover {
-  background-color: var(--vt-c-medium-purple-2);
-}
-
-.btnModal:active {
-  background-color: var(--vt-c-medium-purple-1);
-  color: var(--vt-c-white);
-}
+.profile{max-width:100%}.streak h4{font-size:4vh;color:#fbd73a}.gamificationElements{background-color:var(--vt-c-light-yellow-1);padding:10px 35px;border-radius:8px;text-align:center}.data{background-color:var(--vt-c-light-orange-2);border:2px solid var(--vt-c-medium-orange-1);width:45%}.btnModal{background-color:var(--vt-c-medium-purple-3)}.btnModal:hover{background-color:var(--vt-c-medium-purple-2)}.btnModal:active{background-color:var(--vt-c-medium-purple-1);color:var(--vt-c-white)}
 </style>

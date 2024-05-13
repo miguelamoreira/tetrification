@@ -156,53 +156,5 @@ return{player1:colorPlayer1,player2:colorPlayer2,}},showModal(title,text){this.m
 </script>
 
 <style scoped>
-.gameViewer {
-  max-width: 100%;
-}
-
-.gameboys {
-  height: 60%;
-}
-
-.screenBg {
-  height: 50%;
-  background-color: var(--vt-c-dark-grey-1);
-  align-items: center;
-}
-
-.screen {
-  height: 80%;
-  width: 90%;
-  background-color: var(--vt-c-white);
-}
-
-.btnBet {
-  background-color: var(--vt-c-white);
-  border: 2px solid var(--vt-c-medium-purple-2);
-  width: 150px;
-}
-
-.btnBet:hover, .btn-active {
-  background-color: var(--vt-c-dark-purple-2);
-  color: var(--vt-c-white-mute);
-}
-
-.game-list {
-  background-color: var(--vt-c-white-mute); 
-  height: 110vh; 
-  padding: 0; 
-}
-
-.btnModal {
-  background-color: var(--vt-c-medium-purple-3);
-}
-
-.btnModal:hover {
-  background-color: var(--vt-c-medium-purple-2);
-}
-
-.btnModal:active {
-  background-color: var(--vt-c-medium-purple-1);
-  color: var(--vt-c-white);
-}
+.gameViewer{max-width:100%}.gameboys{height:60%}.screenBg{height:50%;background-color:var(--vt-c-dark-grey-1);align-items:center}.screen{height:80%;width:90%;background-color:var(--vt-c-white)}.btnBet{background-color:var(--vt-c-white);border:2px solid var(--vt-c-medium-purple-2);width:150px}.btnBet:hover,.btn-active{background-color:var(--vt-c-dark-purple-2);color:var(--vt-c-white-mute)}.game-list{background-color:var(--vt-c-white-mute);height:110vh;padding:0}.btnModal{background-color:var(--vt-c-medium-purple-3)}.btnModal:hover{background-color:var(--vt-c-medium-purple-2)}.btnModal:active{background-color:var(--vt-c-medium-purple-1);color:var(--vt-c-white)}
 </style>

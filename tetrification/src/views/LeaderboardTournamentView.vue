@@ -200,33 +200,5 @@ export default{components:{NavBar,},data(){return{userStore:useUserStore(),leade
   </script>
 
 <style scoped>
-  .leaderboard {
-    max-width: 100%;
-}
-
-  .active-text {
-    text-decoration: underline;
-    background-color: white;
-  }
-  .active-text {
-    font-weight: bold;
-  }
-
-  .tournament {
-    height: 100%;
-  }
-
-  .card-player {
-    width: 200px;
-    background-color: var(--vt-c-medium-blue-2);
-  }
-
-  .card-player-wrapper {
-    background-color: var(--vt-c-dark-blue-1);
-    width: 250px;
-  }
-
-  .card-user {
-    background-color: var(--vt-c-white-mute);
-  }
+.leaderboard{max-width:100%}.active-text{text-decoration:underline;background-color:#fff}.active-text{font-weight:700}.tournament{height:100%}.card-player{width:200px;background-color:var(--vt-c-medium-blue-2)}.card-player-wrapper{background-color:var(--vt-c-dark-blue-1);width:250px}.card-user{background-color:var(--vt-c-white-mute)}
 </style>

@@ -96,15 +96,5 @@ export default{components:{NavBar,},data(){return{playerStore:usePlayersStore(),
 </script>
 
 <style scoped>
-  .playerDetails {
-    max-width: 100%;
-}
-
-.game-card {
-    background-color: var(--vt-c-white-mute);
-}
-
-.game-card-title {
-    background-color: var(--vt-c-medium-grey-2);
-}
+.playerDetails{max-width:100%}.game-card{background-color:var(--vt-c-white-mute)}.game-card-title{background-color:var(--vt-c-medium-grey-2)}
 </style>

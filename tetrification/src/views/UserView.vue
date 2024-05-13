@@ -68,18 +68,5 @@ import{useUserStore}from "@/stores/users";import NavBar from "@/components/navba
 </script>
 
 <style scoped>
-  .profile {
-    max-width: 100%;
-  }
-  .gamificationElements {
-    background-color: var(--vt-c-light-yellow-1);
-    padding: 10px 35px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  .data {
-    background-color: var(--vt-c-light-orange-2);
-    border: 2px solid var(--vt-c-medium-orange-1);
-    width: 45%;
-  }
+.profile{max-width:100%}.gamificationElements{background-color:var(--vt-c-light-yellow-1);padding:10px 35px;border-radius:8px;text-align:center}.data{background-color:var(--vt-c-light-orange-2);border:2px solid var(--vt-c-medium-orange-1);width:45%}
 </style>

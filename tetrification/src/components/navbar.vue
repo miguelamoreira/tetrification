@@ -28,15 +28,6 @@
 <script>
 import { RouterLink } from "vue-router";
 import { useUserStore } from '@/stores/users';
-export default {
-  data() {
-    return {
-      userStore: useUserStore(),
-    };
-  },
-};
+export default{data(){return{userStore:useUserStore(),}},}
 </script>
 
-<style>
-
-</style>
