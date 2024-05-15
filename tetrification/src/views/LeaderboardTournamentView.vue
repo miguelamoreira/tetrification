@@ -1,12 +1,9 @@
 <template>
     <v-container class="leaderboard">
       <v-row>
-        
-        <!-- Navbar -->
         <v-col cols="2">
           <NavBar></NavBar>
         </v-col>
-  
         <v-col cols="10" md="9">
             <div>
             <h1>Leaderboard</h1>
@@ -20,7 +17,6 @@
                 <h2 class="mr-6" :class="{ 'active-text': showUsers }">Users</h2>
               </button>
             </div>
-
             <div class="tournament btn-active" v-show="showTournament">
               <v-row style="height: 100%;">
                 <v-col cols="2" class="d-flex flex-column justify-space-between mr-4">
@@ -116,8 +112,8 @@
               <v-row class="justify-center mt-8">
                 <v-col cols="4">
                   <v-card class="d-flex flex-row justify-space-between pa-4" @click="redirectToUserDetails(userData[0].id)" :elevation="0">
-                    <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[0].gender === 'Male'" width="35%">
-                    <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[0].gender === 'Female'" width="35%">
+                    <img src="@/assets/images/avatars/avatarM.svg" style="width: 110px; height: 110px;" v-if="userData[0].gender === 'Male'" width="35%">
+                    <img src="@/assets/images/avatars/avatarF.svg" style="width: 110px; height: 110px;" v-if="userData[0].gender === 'Female'" width="35%">
                     <div class="d-flex flex-column justify-space-between text-center">
                       <span class="font-weight-bold">{{ userData[0].username }}</span>
                       <span>{{ userData[0].country }}</span>
@@ -129,8 +125,8 @@
               <v-row class="mt-8 d-flex justify-center">
                 <v-col cols="4">
                   <v-card class="d-flex flex-row justify-space-between pa-4" @click="redirectToUserDetails(userData[1].id)" :elevation="0">
-                    <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[1].gender === 'Male'" width="35%">
-                    <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[1].gender === 'Female'" width="35%">
+                    <img src="@/assets/images/avatars/avatarM.svg" style="width: 110px; height: 110px;" v-if="userData[1].gender === 'Male'" width="35%">
+                    <img src="@/assets/images/avatars/avatarF.svg" style="width: 110px; height: 110px;" v-if="userData[1].gender === 'Female'" width="35%">
                     <div class="d-flex flex-column justify-space-between text-center">
                       <span class="font-weight-bold">{{ userData[1].username }}</span>
                       <span>{{ userData[1].country }}</span>
@@ -145,8 +141,8 @@
                 </v-col>
                 <v-col cols="4">
                   <v-card class="d-flex flex-row justify-space-between pa-4" @click="redirectToUserDetails(userData[2].id)" :elevation="0">
-                    <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[2].gender === 'Male'" width="35%">
-                    <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[2].gender === 'Female'" width="35%">
+                    <img src="@/assets/images/avatars/avatarM.svg" style="width: 110px; height: 110px;" v-if="userData[2].gender === 'Male'" width="35%">
+                    <img src="@/assets/images/avatars/avatarF.svg" style="width: 110px; height: 110px;" v-if="userData[2].gender === 'Female'" width="35%">
                     <div class="d-flex flex-column justify-space-between text-center">
                       <span class="font-weight-bold">{{ userData[2].username }}</span>
                       <span>{{ userData[2].country }}</span>
@@ -165,8 +161,8 @@
                 <v-col cols="6" lg="6" sm="12">
                   <v-card class="card-user d-flex flex-row justify-space-around py-8" @click="redirectToUserDetails(userData[3].id)">
                     <h3 class="my-6 font-weight-bold">4</h3>
-                    <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[3].gender === 'Male'" width="20%">
-                    <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[3].gender === 'Female'" width="20%">
+                    <img src="@/assets/images/avatars/avatarM.svg" style="width: 110px; height: 110px;" v-if="userData[3].gender === 'Male'" width="20%">
+                    <img src="@/assets/images/avatars/avatarF.svg" style="width: 110px; height: 110px;" v-if="userData[3].gender === 'Female'" width="20%">
                     <div class="d-flex flex-column justify-space-between text-center">
                       <span class="font-weight-bold">{{ userData[3].username }}</span>
                       <span>{{ userData[3].country }}</span>
@@ -177,8 +173,8 @@
                 <v-col cols="6" lg="6" sm="12">
                   <v-card class="card-user d-flex flex-row justify-space-around py-8" @click="redirectToUserDetails(userData[4].id)">
                     <h3 class="my-6 font-weight-bold">5</h3>
-                    <img src="@/assets/images/avatars/avatarM.svg" v-if="userData[3].gender === 'Male'" width="20%">
-                    <img src="@/assets/images/avatars/avatarF.svg" v-if="userData[3].gender === 'Female'" width="20%">
+                    <img src="@/assets/images/avatars/avatarM.svg" style="width: 110px; height: 110px;" v-if="userData[3].gender === 'Male'">
+                    <img src="@/assets/images/avatars/avatarF.svg" style="width: 110px; height: 110px;" v-if="userData[3].gender === 'Female'">
                     <div class="d-flex flex-column justify-space-between text-center">
                       <span class="font-weight-bold">{{ userData[4].username }}</span>
                       <span>{{ userData[4].country }}</span>

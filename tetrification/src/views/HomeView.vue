@@ -65,9 +65,9 @@
       </v-carousel>
     </v-container>
     <v-container id="sectionTournament">
-      <img src="@/assets/images/landing/piece_purple.svg" style="position: absolute; left: 0vh;" loading="lazy">
+      <img src="@/assets/images/landing/piece_purple.svg" style="position: absolute; left: 0vh;  width: 75px; height: 100px" loading="lazy">
       <div class="divCTWC ml-lg-auto pa-8 d-flex align-center">
-        <img src="@/assets/images/ctwc.svg" style="margin-right: 16px; width: 25%;" loading="lazy">
+        <img src="@/assets/images/ctwc.svg" style="margin-right: 16px; width: 300px; height: 300px;" loading="lazy">
         <div>
           <h3 class="font-weight-bold mb-8">What is the CTWC?</h3>
           <p class="mb-8">
@@ -94,12 +94,12 @@
             The trophy is named after a former seven-time winner of the competition.
           </p>
         </div>
-        <img src="@/assets/images/history.svg" style="margin-left: 16px; width: 25%;" loading="lazy">
+        <img src="@/assets/images/history.svg" style="margin-left: 16px; width: 300px; height: 300px" loading="lazy">
     </div>
-    <img src="@/assets/images/landing/piece_yellow.svg" style="position: absolute; right: 5vh; top: 265vh;" loading="lazy">
-    <img src="@/assets/images/landing/piece_orange.svg" style="position: absolute; left: 10vh" loading="lazy">
+    <img src="@/assets/images/landing/piece_yellow.svg" style="position: absolute; right: 5vh; top: 265vh; width: 100px; height: 150px;" loading="lazy">
+    <img src="@/assets/images/landing/piece_orange.svg" style="position: absolute; left: 10vh; width: 100px; height: 150px;" loading="lazy">
     <div class="divRules ml-lg-auto pa-8 d-flex align-center">
-      <img src="@/assets/images/rules.svg" style="margin-right: 16px; width: 25%;" loading="lazy">
+      <img src="@/assets/images/rules.svg" style="margin-right: 16px; width: 300px; height: 300px" loading="lazy">
       <div>
         <h3 class="font-weight-bold mb-8">Tournament Rules</h3>
         <p class="mb-8">
@@ -127,8 +127,8 @@
     </div>
     </v-container>
     <v-container id="sectionFAQ">
-      <img src="@/assets/images/landing/piece_blue.svg" style="position: absolute; left: 0vh;" loading="lazy">
-      <img src="@/assets/images/landing/piece_purple2.svg" style="position: absolute; right: 5vh; bottom: 100vh" loading="lazy">
+      <img src="@/assets/images/landing/piece_blue.svg" style="position: absolute; left: 0vh;  width: 150px; height: 50px" loading="lazy">
+      <img src="@/assets/images/landing/piece_purple2.svg" style="position: absolute; right: 5vh; bottom: 100vh;  width: 150px; height: 100px" loading="lazy">
       <v-row justify="center" class="justify-center">
         <v-col cols="12" md="6">
           <v-card style="background-color: var(--vt-c-medium-grey-1); " class="card-faq mb-12 pa-8 text-center">
@@ -138,10 +138,10 @@
             </v-expansion-panels>
           </v-card>
         </v-col>
-        <img src="@/assets/images/footer.svg" style="width: 100%; height: auto; max-width: none; position: relative; z-index: 0;" loading="lazy">
+        <img src="@/assets/images/footer.svg" style="width: 1500px; height: 200px; max-width: none; position: relative; z-index: 0; " loading="lazy">
       </v-row>
-      <img src="@/assets/images/landing/piece_yellow2.svg" style="position: absolute; left: 15vh; bottom: 50vh" loading="lazy">
-      <img src="@/assets/images/landing/piece_orange2.svg" style="position: absolute; right: 0vh; bottom: 40vh" loading="lazy">
+      <img src="@/assets/images/landing/piece_yellow2.svg" style="position: absolute; left: 15vh; bottom: 50vh;  width: 150px; height: 100px" loading="lazy">
+      <img src="@/assets/images/landing/piece_orange2.svg" style="position: absolute; right: 0vh; bottom: 40vh;  width: 150px; height: 100px" loading="lazy">
     </v-container>
   </v-app>
 </template>

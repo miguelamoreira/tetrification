@@ -1,11 +1,9 @@
 <template>
   <v-container class="gameViewer">
     <v-row>
-      <!-- Navbar -->
       <v-col cols="2">
         <NavBar></NavBar>
       </v-col>
-
       <v-col cols="7" md="6">
         <div class="header d-flex justify-space-between">
           <div class="title">
@@ -15,7 +13,6 @@
             <h3>{{ minutes }}:00</h3>
           </div>
         </div>
-
         <div class="gameboys d-flex justify-space-between">
           <v-card class="pa-4 pt-4 mb-8 mt-4" elevation="4" style="z-index: 1; background-color: var(--vt-c-white-mute); width: 45%;">
             <v-card-title class="text-center card-title mb-4" style="margin: 0 auto; display: flex; justify-content: space-evenly;" v-if="gameId == 7">
@@ -34,24 +31,24 @@
               <span>Level: {{ levelPlayer1 }}</span>
               <div class="gamesWon ma-8">
                 <div v-if="winsPlayer1 == 0" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer1 == 1" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer1 == 2" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer1 == 3" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
                 </div>
               </div>
             </v-card-content>
@@ -74,24 +71,24 @@
               <span>Level: {{ levelPlayer2 }}</span>
               <div class="gamesWon ma-8">
                 <div v-if="winsPlayer2 == 0" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer2 == 1" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life1.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer2 == 2" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life1.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life1.svg" style="width: 40px; height: 40px;">
                 </div>
                 <div v-else-if="winsPlayer2 == 3" class="d-flex justify-space-evenly">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
-                  <img src="@/assets/images/life2.svg">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
+                  <img src="@/assets/images/life2.svg" style="width: 40px; height: 40px;">
                 </div>
               </div>
             </v-card-content>
@@ -122,11 +119,10 @@
               </div>
             </v-card>
         </div>
-        <img src="@/assets/images/gamefeed.svg" style="width: 100%;">
+        <img src="@/assets/images/gamefeed.svg" style="width: 450px; height: 400px;">
       </v-col>
     </v-row>
   </v-container>
-
   <v-dialog v-model="modalVisible" width="600">
     <v-card class="text-center">
       <v-card-title>{{ modalTitle }}</v-card-title>
@@ -137,13 +133,11 @@
     </v-card>
   </v-dialog>
 </template>
-
 <script>
 import { useUserStore } from '@/stores/users';
 import { useGameStore } from '@/stores/games';
 import { usePlayersStore } from '@/stores/players';
 import NavBar from '@/components/navbar.vue';
-
 export default {
   components:{NavBar},data(){return{userStore:useUserStore(),gameStore:useGameStore(),playerStore:usePlayersStore(),gameId:null,minutes:0,player1:'',player2:'',pointsPlayer1:0,pointsPlayer2:0,levelPlayer1:0,levelPlayer2:0,winsPlayer1:0,eventPlayer1:'',eventPlayer2:'',winsPlayer2:0,games:[],events:[],loopExecuted:!1,btnPlayer1:!1,btnPlayer2:!1,modalVisible:!1,modalTitle:'',modalText:''}},methods:{async fetchGameData(){this.gameId=this.$route.params.gameId;try{await this.gameStore.fetchGames();this.games=this.gameStore.getGameEvents(this.gameId);const lastEvent=this.games[this.games.length-1];if(this.gameId!=7){if(!this.loopExecuted){for(const game of this.games){this.minutes=game.minute;this.player1=game.player1;this.player2=game.player2;this.pointsPlayer1=game.pointsPlayer1;this.pointsPlayer2=game.pointsPlayer2;this.levelPlayer1=game.levelPlayer1;this.levelPlayer2=game.levelPlayer2;this.winsPlayer1=game.winsPlayer1;this.winsPlayer2=game.winsPlayer2;this.eventPlayer1=game.eventPlayer1;this.eventPlayer2=game.eventPlayer2;this.events.push({minutes:this.minutes,eventPlayer1:this.eventPlayer1,eventPlayer2:this.eventPlayer2,});if(game.minutes==lastEvent.minute){this.checkBet()}
 await new Promise(resolve=>setTimeout(resolve,1000))}
@@ -154,7 +148,6 @@ return{player1:heightPercentagePlayer1+'%',player2:heightPercentagePlayer2+'%',}
 if(percentagePlayer2<30){colorPlayer2='green'}else if(percentagePlayer2<70){colorPlayer2='yellow'}else{colorPlayer2='red'}
 return{player1:colorPlayer1,player2:colorPlayer2,}},showModal(title,text){this.modalVisible=!0;this.modalTitle=title;this.modalText=text},closeModal(){this.modalVisible=!1}},mounted(){this.fetchGameData();this.handleClickBets()},}
 </script>
-
 <style scoped>
 .gameViewer{max-width:100%}.gameboys{height:60%}.screenBg{height:50%;background-color:var(--vt-c-dark-grey-1);align-items:center}.screen{height:80%;width:90%;background-color:var(--vt-c-white)}.btnBet{background-color:var(--vt-c-white);border:2px solid var(--vt-c-medium-purple-2);width:150px}.btnBet:hover,.btn-active{background-color:var(--vt-c-dark-purple-2);color:var(--vt-c-white-mute)}.game-list{background-color:var(--vt-c-white-mute);height:110vh;padding:0}.btnModal{background-color:var(--vt-c-medium-purple-3)}.btnModal:hover{background-color:var(--vt-c-medium-purple-2)}.btnModal:active{background-color:var(--vt-c-medium-purple-1);color:var(--vt-c-white)}
 </style>
