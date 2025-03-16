@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import '@/assets/base.css';
 import{useUserStore}from '@/stores/users';export default{data(){return{userStore:useUserStore(),name:'',username:'',date:'',gender:null,country:'',favouritePlayerOptions:["SIDNEV","FRACTAL","ALEX T","PIXELANDY","SCUTI","HFULUFGUS","DOG","DENGLER"],favouritePlayer:null,email:'',password:'',confirmPassword:'',loading:!1,genderOptions:["Male","Female","Other"],modalVisible:!1,modalTitle:'',modalText:''}},methods:{signup(){try{this.userStore.signup(this.name,this.username,this.email,this.password,this.confirmPassword,this.date,this.gender,this.country,this.favouritePlayer,);this.$router.push({name:"login"})}catch(error){this.showModal('Sign up error',error.message)
 this.name=''
 this.username=''

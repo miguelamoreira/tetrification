@@ -147,6 +147,7 @@
 </template>
 
 <script>
+import '@/assets/base.css';
 import{useFAQStore}from '@/stores/faq';export default{data(){return{faqStore:useFAQStore(),}},computed:{faqs(){return this.faqStore.getFAQS}},methods:{scrollToSection(sectionId){const element=document.getElementById(sectionId);if(element){element.scrollIntoView({behavior:'smooth'})}}}}
 </script>
 
